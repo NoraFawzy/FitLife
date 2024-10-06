@@ -22,6 +22,10 @@ Route::get('/loginn', function () {
   return view('loginn');
 });
 
+Route::get('/index', function () {
+    return view('index');
+  });
+  
 
 
 Route::get('/dashboard', function () {
