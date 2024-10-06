@@ -697,6 +697,32 @@ https://www.tooplate.com/view/2119-gymso-fitness
   }
 
   /*---------------------------------------
+     subscription section              
+  -----------------------------------------*/
+  .subscription-section {
+    background-image: url('/public/images/subsBG.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 50px 0;
+    color: #fff;
+}
+
+.subscription-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* نصف شفافية للـoverlay */
+}
+
+.subscription-content {
+    position: relative;
+    z-index: 1;
+}
+
+  /*---------------------------------------
      RESPONSIVE STYLES              
   -----------------------------------------*/
 
