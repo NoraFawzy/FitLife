@@ -182,8 +182,8 @@
                 </div>
 
                 <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
-                    <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> Cairo - Helwan, Egypt</p>
+                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">We're happy</h2>
+                    <p ><i ></i>to help you</p>
                 </div>
             </div>
         </div>
