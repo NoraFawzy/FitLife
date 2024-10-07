@@ -22,9 +22,37 @@
                 <li class="nav-item">
                     <a href="#contact" class="nav-link smoothScroll">Contact</a>
                 </li>
-                <li class="login-button">
-                    <a href="/loginn" class="nav-link smoothScroll">Login</a>
-                </li>
+                
+
+
+<li> 
+                @if (Route::has('login'))
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        @auth
+        <li class="login-button d-flex align-items-center  ">
+
+        
+    <a href="{{ url('/profile') }}" class="nav-link smoothScroll" style="font-size: 14px;">Profile</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    <a href="{{ route('logout') }}" class="nav-link smoothScroll ms-2" 
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+       style="margin-left: 10px;">
+       Logout
+    </a>
+</li>
+        @else
+            <li class="login-button">
+                <a href="/loginn" class="nav-link smoothScroll">Login</a>
+            </li>
+            @endif
+        @endauth
+    </div>
+
+</li>
+
+
             </ul>
         </div>
     </div>

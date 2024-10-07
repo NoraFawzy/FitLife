@@ -20,13 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('/loginn', function () {
-  return view('loginn');
+  return view('/loginn');
 });
 
-Route::get('/', function () {
-    return view('index');
-  });
-  
+
   Route::get('/subscriptions', function () {
     return view('users.subscriptions');
 })->name('subscriptions');
@@ -39,12 +36,13 @@ Route::get('/classes-coaches', function () {
 
 Route::get('/index', function () {
     return view('index');
-})->middleware(['auth', 'verified'])->name('index');
+})->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';

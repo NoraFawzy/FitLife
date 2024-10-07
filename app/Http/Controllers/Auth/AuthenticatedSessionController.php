@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('/index');
     }
 
     /**
@@ -29,7 +29,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(Request $request)
     {
-        // Handle authentication logic
         $this->validateLogin($request);
 
         if (Auth::attempt($request->only('email', 'password'))) {
@@ -44,17 +43,32 @@ class AuthenticatedSessionController extends Controller
         ]);
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    }
+
     /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Log the user out
         Auth::guard('web')->logout();
-
+    
+        // Invalidate the session
         $request->session()->invalidate();
-
+    
+        // Regenerate the CSRF token
         $request->session()->regenerateToken();
-
-        return redirect('/');
+    
+        // Redirect to the index page
+        return redirect('/index'); // Change '/' to '/index' if that's your index page
     }
+
 }
+
+
