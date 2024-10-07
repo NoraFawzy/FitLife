@@ -32,7 +32,10 @@ Route::get('/', function () {
 })->name('subscriptions');
   
 
-
+Route::get('/classes-coaches', function () {
+    return view('users.classes-coaches');
+})->name('classes');
+  
 
 Route::get('/index', function () {
     return view('index');
