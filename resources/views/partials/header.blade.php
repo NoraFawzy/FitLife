@@ -23,7 +23,7 @@
                     <a href="#contact" class="nav-link smoothScroll">Contact</a>
                 </li>
                 <li class="login-button">
-                    <a href="/login" class="nav-link smoothScroll">Login</a>
+                    <a href="/loginn" class="nav-link smoothScroll">Login</a>
                 </li>
             </ul>
         </div>
