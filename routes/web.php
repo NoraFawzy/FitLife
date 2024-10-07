@@ -27,6 +27,11 @@ Route::get('/', function () {
     return view('index');
   });
   
+  Route::get('/subscriptions', function () {
+    return view('users.subscriptions');
+})->name('subscriptions');
+  
+
 
 
 Route::get('/index', function () {

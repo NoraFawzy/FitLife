@@ -102,6 +102,21 @@
                 </div>
             </div>
         </div>
+
+<div style="text-align: center;">
+  <a href="{{ route('subscriptions') }}" 
+    style="
+      background-color: var(--primary-color);
+      color: var(--white-color);
+      padding: 5px 20px;
+      border-radius: 5px;
+      text-decoration: none; 
+      margin-top: 2%; 
+      display: inline-block;">
+      Subscription Plans
+    </a>
+</div>
+
     </section>
 
     <!-- SCHEDULE -->
