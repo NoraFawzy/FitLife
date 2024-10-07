@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subscriptions.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tooplate-gymso-style.css') }}">
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
