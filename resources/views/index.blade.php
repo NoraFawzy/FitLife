@@ -33,8 +33,8 @@
             <div class="row">
                 <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
                     <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are FitLife Hub</h2>
-                    <p data-aos="fade-up" data-aos-delay="400">You are NOT allowed to redistribute this HTML template downloadable ZIP file on any template collection site. You are allowed to use this template for your personal or business websites.</p>
-                    <p data-aos="fade-up" data-aos-delay="500">If you have any question regarding <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">Gymso Fitness HTML template</a>, you can <a rel="nofollow" href="https://www.tooplate.com/contact" target="_parent">contact Tooplate</a> immediately. Thank you.</p>
+                    <p data-aos="fade-up" data-aos-delay="400"> We’re passionate about helping individuals achieve their fitness goals and lead healthier, more active lives. Whether you’re a beginner or a seasoned athlete, we provide a wealth of resources, expert tips, and personalized plans tailored to your needs. </p>
+                    <p > Our platform is designed to inspire and empower you through a wide variety of sports, workouts, and wellness practices, all with the aim of creating a community focused on growth, performance, and well-being. Join us on the journey to a stronger, fitter you!</p>
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="700">
