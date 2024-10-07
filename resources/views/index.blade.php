@@ -2,7 +2,22 @@
 
 @section('content')
 
+<style>
+    .custom-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 30px;    border-radius: 5px;
+    text-decoration: none; 
+    margin-top: 2%; 
+    display: inline-block;
+}
 
+.custom-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--white-color); /* Change background color on hover, if desired */
+}
+
+</style>
 
     <!-- HERO -->
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
@@ -103,17 +118,9 @@
             </div>
         </div>
 
-<div style="text-align: center;">
-  <a href="{{ route('subscriptions') }}" 
-    style="
-      background-color: var(--primary-color);
-      color: var(--white-color);
-      padding: 5px 20px;
-      border-radius: 5px;
-      text-decoration: none; 
-      margin-top: 2%; 
-      display: inline-block;">
-      Subscription Plans
+        <div style="text-align: center;">
+    <a href="{{ route('subscriptions') }}" class="custom-btn">
+        Subscription Plans
     </a>
 </div>
 
