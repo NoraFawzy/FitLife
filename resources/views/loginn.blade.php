@@ -74,12 +74,12 @@
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
-                    <p>Enter your personal details to use all of the site features</p>
+                    <p>Have an account! <br>Please, Enter you E-mail and Password</p>
                     <button class="hidden" id="login">Log in</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Register with your personal details to use all of the site features</p>
+                    <h1>New Here!</h1>
+                    <p>  Please, Register with your personal details to use all of the site features</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
             </div>
