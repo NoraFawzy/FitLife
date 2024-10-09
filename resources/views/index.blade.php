@@ -2,22 +2,22 @@
 
 @section('content')
 
-<style>
-    .custom-btn {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 10px 30px;    border-radius: 5px;
-    text-decoration: none; 
-    margin-top: 2%; 
-    display: inline-block;
-}
+    <style>
+        .custom-btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 10px 30px;    border-radius: 5px;
+            text-decoration: none;
+            margin-top: 2%;
+            display: inline-block;
+        }
 
-.custom-btn:hover {
-    color: var(--primary-color);
-    background-color: var(--white-color); /* Change background color on hover, if desired */
-}
+        .custom-btn:hover {
+            color: var(--primary-color);
+            background-color: var(--white-color); /* Change background color on hover, if desired */
+        }
 
-</style>
+    </style>
 
     <!-- HERO -->
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
@@ -119,10 +119,10 @@
         </div>
 
         <div style="text-align: center;">
-    <a href="{{ route('subscriptions') }}" class="custom-btn">
-        Subscription Plans
-    </a>
-</div>
+            <a href="{{ route('plans.index') }}" class="custom-btn">
+                Subscription Plans
+            </a>
+        </div>
 
     </section>
 
@@ -138,50 +138,50 @@
                 <div class="col-lg-12 py-5 col-md-12 col-12">
                     <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
                         <thead class="thead-light">
-                            <th><i class="fa fa-calendar"></i></th>
-                            <th>Mon</th>
-                            <th>Tue</th>
-                            <th>Wed</th>
-                            <th>Thu</th>
-                            <th>Fri</th>
-                            <th>Sat</th>
+                        <th><i class="fa fa-calendar"></i></th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td><small>7:00 am</small></td>
-                                <td><strong>Cardio</strong><span>7:00 am - 9:00 am</span></td>
-                                <td><strong>Power Fitness</strong><span>7:00 am - 9:00 am</span></td>
-                                <td></td>
-                                <td></td>
-                                <td><strong>Yoga Section</strong><span>7:00 am - 9:00 am</span></td>
-                            </tr>
-                            <tr>
-                                <td><small>9:00 am</small></td>
-                                <td></td>
-                                <td></td>
-                                <td><strong>Boxing</strong><span>8:00 am - 9:00 am</span></td>
-                                <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
-                                <td></td>
-                                <td><strong>Cardio</strong><span>8:00 am - 9:00 am</span></td>
-                            </tr>
-                            <tr>
-                                <td><small>11:00 am</small></td>
-                                <td></td>
-                                <td><strong>Boxing</strong><span>11:00 am - 2:00 pm</span></td>
-                                <td><strong>Areobic</strong><span>11:30 am - 3:30 pm</span></td>
-                                <td></td>
-                                <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
-                            </tr>
-                            <tr>
-                                <td><small>2:00 pm</small></td>
-                                <td><strong>Boxing</strong><span>2:00 pm - 4:00 pm</span></td>
-                                <td><strong>Power lifting</strong><span>3:00 pm - 6:00 pm</span></td>
-                                <td></td>
-                                <td><strong>Cardio</strong><span>6:00 pm - 9:00 pm</span></td>
-                                <td></td>
-                                <td><strong>Crossfit</strong><span>5:00 pm - 7:00 pm</span></td>
-                            </tr>
+                        <tr>
+                            <td><small>7:00 am</small></td>
+                            <td><strong>Cardio</strong><span>7:00 am - 9:00 am</span></td>
+                            <td><strong>Power Fitness</strong><span>7:00 am - 9:00 am</span></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Yoga Section</strong><span>7:00 am - 9:00 am</span></td>
+                        </tr>
+                        <tr>
+                            <td><small>9:00 am</small></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Boxing</strong><span>8:00 am - 9:00 am</span></td>
+                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
+                            <td></td>
+                            <td><strong>Cardio</strong><span>8:00 am - 9:00 am</span></td>
+                        </tr>
+                        <tr>
+                            <td><small>11:00 am</small></td>
+                            <td></td>
+                            <td><strong>Boxing</strong><span>11:00 am - 2:00 pm</span></td>
+                            <td><strong>Areobic</strong><span>11:30 am - 3:30 pm</span></td>
+                            <td></td>
+                            <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
+                        </tr>
+                        <tr>
+                            <td><small>2:00 pm</small></td>
+                            <td><strong>Boxing</strong><span>2:00 pm - 4:00 pm</span></td>
+                            <td><strong>Power lifting</strong><span>3:00 pm - 6:00 pm</span></td>
+                            <td></td>
+                            <td><strong>Cardio</strong><span>6:00 pm - 9:00 pm</span></td>
+                            <td></td>
+                            <td><strong>Crossfit</strong><span>5:00 pm - 7:00 pm</span></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

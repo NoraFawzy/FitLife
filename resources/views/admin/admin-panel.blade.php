@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
     <title>Admin Panel</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <style>
         .aa {
     color: #000 ;
@@ -50,14 +50,14 @@
                     </button>
                     <div class="collapse mt-2" id="instructors-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded aa">Add Subscription plans</a></li>
-                            <li><a href="#" class="link-dark rounded aa">View Subscription plans</a></li>
+                            <li><a href="{{ route('plans.create') }}" class="link-dark rounded aa">Add Subscription plans</a></li>
+                            <li><a href="{{ route('plans.indexx') }}" class="link-dark rounded aa">View Subscription plans</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="mb-1">
-                    <a href="#" class="btn btn-block btn-outline align-items-center rounded collapsed ">
+                    <a href="{{ route('users-list') }}" class="btn btn-block btn-outline align-items-center rounded collapsed ">
                         List Users</a>
                 </li>
 

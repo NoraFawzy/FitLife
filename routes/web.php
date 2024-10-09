@@ -27,12 +27,12 @@ Route::get('/loginn', function () {
   Route::get('/subscriptions', function () {
     return view('users.subscriptions');
 })->name('subscriptions');
-  
+
 
 Route::get('/classes-coaches', function () {
     return view('users.classes-coaches');
 })->name('classes');
-  
+
 
 Route::get('/index', function () {
     return view('index');
@@ -46,3 +46,30 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\UserController;
+
+// Route group for admin middleware
+Route::middleware(['auth', 'admin'])->group(function () {
+    // User management routes
+    Route::resource('users', UserController::class);
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::get('/admin/users-list', [UserController::class, 'index'])->name('users-list');
+
+    // Plan management routes
+    Route::get('/admin/add-plan', [PlanController::class, 'create'])->name('plans.create');
+    Route::post('admin/plans-list', [PlanController::class, 'store'])->name('plans.store');
+    Route::delete('/plans/{id}', [PlanController::class, 'destroy'])->name('plans.destroy');
+    Route::get('/plans/{id}/edit', [PlanController::class, 'edit'])->name('plans.edit');
+    Route::put('/plans/{id}', [PlanController::class, 'update'])->name('plans.update');
+    Route::get('/admin/admin-panel', function () {
+        return view('admin.admin-panel');
+    })->name('admin-panel');
+    Route::get('admin/plans-list', [PlanController::class, 'indexx'])->name('plans.indexx');
+});
+
+// Route to display all plans (no admin restriction)
+Route::get('/subscriptions', [PlanController::class, 'index'])->name('plans.index');
+
+
