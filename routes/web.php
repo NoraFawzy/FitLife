@@ -39,7 +39,8 @@ Route::get('/index', function () {
 })->name('index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Change to show method
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Ensure you have a separate route for editing
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -71,5 +72,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Route to display all plans (no admin restriction)
 Route::get('/subscriptions', [PlanController::class, 'index'])->name('plans.index');
-
 
