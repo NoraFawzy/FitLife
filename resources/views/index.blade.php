@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#" class="class-card-link">
+                    <a href="{{ route('class.show') }}" class="class-card-link">
                         <div class="class-thumb">
                             <img src="{{ asset('images/class/yoga-class.jpg') }}" class="img-fluid" alt="Class">
                             <div class="class-info">
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
-                    <a href="#" class="class-card-link">
+                    <a href="{{ route('class.show') }}" class="class-card-link">
                         <div class="class-thumb">
                             <img src="{{ asset('images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Class">
                             <div class="class-info">
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                    <a href="#" class="class-card-link">
+                    <a href="{{ route('class.show') }}" class="class-card-link">
                         <div class="class-thumb">
                             <img src="{{ asset('images/class/cardio-class.jpg') }}" class="img-fluid" alt="Class">
                             <div class="class-info">
