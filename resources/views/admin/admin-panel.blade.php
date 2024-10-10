@@ -77,6 +77,11 @@
                     <a href="#" class="btn btn-block btn-outline align-items-center rounded collapsed">
                         List Messages</a>
                 </li>
+                <li class="mb-1">
+                    <a href="{{ url('/profile') }}" class="btn btn-block btn-outline align-items-center rounded collapsed ">
+                        My Profile</a>
+                </li>
+
             </ul>
         </div>
     </div>
