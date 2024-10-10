@@ -73,6 +73,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Route to display all plans (no admin restriction)
 Route::get('/subscriptions', [PlanController::class, 'index'])->name('plans.index');
 
+
 Route::get('/class', function () {
   return view('users.showClasses');
 })->name('class.show');
+
+//enable subscribing btn
+Route::post('/subscribe/{planId}', [PlanController::class, 'subscribe'])->name('subscribe');

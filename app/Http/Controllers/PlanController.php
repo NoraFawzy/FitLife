@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
@@ -102,4 +103,35 @@ class PlanController extends Controller
             return redirect()->back()->with('error', 'لم يتم العثور على الخطة');
         }
     }
+
+    
+    public function subscribe($planId)
+    {
+        // Get the currently authenticated user
+        $user = auth()->user();
+        
+        // Check if the user is authenticated
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'You need to be logged in to subscribe.');
+        }
+    
+        // Find the plan by its ID
+        $plan = Plan::findOrFail($planId);
+        
+        // Associate the plan with the user
+        $user->is_subscribed = true; // Set subscription status
+        
+        // Save the user instance
+        if ($user->save()) {
+            // Optionally, you could also associate the plan with the user if needed
+            // $user->plans()->attach($planId); // Uncomment if you have a many-to-many relationship
+            
+            // Redirect to profile with a success message
+            return redirect()->route('profile.show')->with('success', 'Subscription successful!');
+        } else {
+            // Handle the case when saving fails
+            return redirect()->route('profile.show')->with('error', 'Subscription failed. Please try again.');
+        }
+    }
+    
 }
