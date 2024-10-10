@@ -24,6 +24,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger('plan_id')->nullable()->after('id');
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('set null');
+            $table->boolean('is_subscribed')->default(false); // Add the is_subscribed column
+
 
         });
     }

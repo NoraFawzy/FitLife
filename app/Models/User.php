@@ -24,7 +24,8 @@ class User extends Authenticatable
 //    ];
 
 
-    protected $fillable = ['name', 'email', 'password', 'plan_id' , 'role' , 'gender'];
+    protected $fillable = ['name', 'email', 'password', 'plan_id' , 'role' , 'gender' , 'is_subscribed', // Add this line
+];
 
 
 

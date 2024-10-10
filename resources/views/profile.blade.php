@@ -78,18 +78,21 @@
 
         {{-- Show the rest of the page only for user --}}
         @if (Auth::user()->role === 'user')
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> <!-- Responsive column for the second card -->
-                <div class="card" style="height: 300px;">
-                    <div class="card-body text-center"> <!-- Center text in card body -->
-                        <h3 class="card-title">My Subscription Plan</h3>
-                        <p class="card-text"><strong>Plan Name:</strong> <span id="plan-name">{{ $plan->name }}</span></p> <!-- Bold Plan Name -->
-                        <p class="card-text"><strong>Description:</strong> <span id="plan-price">{{ $plan->desc }} </span></p> <!-- Bold Price -->
-                        <p class="card-text"><strong>Price:</strong> <span id="plan-price">{{ $plan->price }} EGP</span></p> <!-- Bold Price -->
-                        <p class="card-text"><strong>Start Date:</strong> <span id="start-date">{{ $user->updated_at }}</span></p> <!-- Bold Start Date -->
-                        <p class="card-text"><strong>Duration:</strong> <span id="plan-duration">{{ $plan->duration }} Months</span></p> <!-- Bold Plan Duration -->
-                    </div>
-                </div>
+        
+        @if($user->is_subscribed) <!-- Assuming 'is_subscribed' is a boolean property of the User model -->
+    <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> <!-- Responsive column for the subscription card -->
+        <div class="card" style="height: 300px;">
+            <div class="card-body text-center"> <!-- Center text in card body -->
+                <h3 class="card-title">My Subscription Plan</h3>
+                <p class="card-text"><strong>Plan Name:</strong> <span id="plan-name">{{ $plan->name }}</span></p> <!-- Bold Plan Name -->
+                <p class="card-text"><strong>Description:</strong> <span id="plan-desc">{{ $plan->desc }}</span></p> <!-- Bold Description -->
+                <p class="card-text"><strong>Price:</strong> <span id="plan-price">{{ $plan->price }} EGP</span></p> <!-- Bold Price -->
+                <p class="card-text"><strong>Start Date:</strong> <span id="start-date">{{ $user->updated_at->format('Y-m-d') }}</span></p> <!-- Bold Start Date -->
+                <p class="card-text"><strong>Duration:</strong> <span id="plan-duration">{{ $plan->duration }} Months</span></p> <!-- Bold Plan Duration -->
             </div>
+        </div>
+    </div>
+@endif
 
             {{-- Rest of the user-specific content --}}
             <section class="schedulee section" id="schedule">
