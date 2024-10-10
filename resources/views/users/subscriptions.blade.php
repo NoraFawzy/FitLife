@@ -40,7 +40,7 @@
                                 @auth
                                     <a href="#" class="btn btn-mid mt-auto" style="font-size:.9rem">Subscribe</a>
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-mid mt-auto" style="font-size:.9rem">Join Now</a>
+                                    <a href="/loginn" class="btn btn-mid mt-auto" style="font-size:.9rem">Join Now</a>
                                 @endauth
 
                             </div>
