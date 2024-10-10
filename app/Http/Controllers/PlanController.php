@@ -118,14 +118,12 @@ class PlanController extends Controller
         // Find the plan by its ID
         $plan = Plan::findOrFail($planId);
         
-        // Associate the plan with the user
-        $user->is_subscribed = true; // Set subscription status
+        // Update the user's subscription status and associate the plan
+        $user->is_subscribed = true; // Set subscription status to true
+        $user->plan_id = $plan->id;  // Associate the plan with the user
         
         // Save the user instance
         if ($user->save()) {
-            // Optionally, you could also associate the plan with the user if needed
-            // $user->plans()->attach($planId); // Uncomment if you have a many-to-many relationship
-            
             // Redirect to profile with a success message
             return redirect()->route('profile.show')->with('success', 'Subscription successful!');
         } else {
@@ -133,5 +131,6 @@ class PlanController extends Controller
             return redirect()->route('profile.show')->with('error', 'Subscription failed. Please try again.');
         }
     }
+    
     
 }

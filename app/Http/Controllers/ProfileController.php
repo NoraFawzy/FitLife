@@ -16,10 +16,10 @@ class ProfileController extends Controller
     public function show()
 {
     $user = auth()->user();
+        
+    // Assuming you have a relationship between User and Plan
+    $plan = $user->plan; // Or however you retrieve the plan associated with the user
     
-    // Assuming a one-to-one relationship between user and plan
-    $plan = $user->plan; // Fetch the user's associated plan
-
     return view('profile', compact('user', 'plan'));
 }
 

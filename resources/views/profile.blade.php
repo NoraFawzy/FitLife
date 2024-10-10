@@ -79,7 +79,7 @@
         {{-- Show the rest of the page only for user --}}
         @if (Auth::user()->role === 'user')
         
-        @if($user->is_subscribed) <!-- Assuming 'is_subscribed' is a boolean property of the User model -->
+   @if($user->is_subscribed && $plan) <!-- Check if the user is subscribed and if the plan exists -->
     <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> <!-- Responsive column for the subscription card -->
         <div class="card" style="height: 300px;">
             <div class="card-body text-center"> <!-- Center text in card body -->
@@ -92,6 +92,8 @@
             </div>
         </div>
     </div>
+@else
+    <p>No subscription plan available.</p> <!-- Optional: Handle case when no plan is found -->
 @endif
 
             {{-- Rest of the user-specific content --}}
