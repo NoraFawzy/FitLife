@@ -41,7 +41,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'role' => 'required|string',
             'plan_id' => 'nullable|exists:plans,id',
-            'gender' => 'required|string|in:male,female,other', // إضافة قواعد التحقق
+            'gender' => ['required', 'string', 'in:male,female'],
         ]);
 
         User::create([
@@ -78,7 +78,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
             'role' => 'required|string',
             'plan_id' => 'nullable|exists:plans,id',
-            'gender' => 'required|string|in:male,female,other', // إضافة قواعد التحقق
+            'gender' => 'required|string|in:male,female', // إضافة قواعد التحقق
         ]);
 
         $user = User::findOrFail($id);

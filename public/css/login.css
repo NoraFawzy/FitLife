@@ -29,7 +29,8 @@ body{
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 513px;
+
 }
 
 .container p{
@@ -80,7 +81,9 @@ body{
 }
 
 .mar{
-    margin-bottom:40px ;
+    margin-bottom: 15px;
+    margin-top: 11%;
+    font-size: 34px;
 }
 
 .mar2{
