@@ -38,8 +38,11 @@
                                 </ul>
 
                                 @auth
-                                    <a href="#" class="btn btn-mid mt-auto" style="font-size:.9rem">Subscribe</a>
-                                @else
+                                <form action="{{ route('subscribe', ['planId' => $plan->id]) }}" method="POST">
+        @csrf <!-- Include CSRF token for security -->
+        <button type="submit" class="btn btn-mid mt-auto" style="font-size:.9rem">Subscribe</button>
+    </form>
+                                    @else
                                     <a href="/loginn" class="btn btn-mid mt-auto" style="font-size:.9rem">Join Now</a>
                                 @endauth
 

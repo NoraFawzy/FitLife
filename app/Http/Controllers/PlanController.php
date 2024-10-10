@@ -102,4 +102,22 @@ class PlanController extends Controller
             return redirect()->back()->with('error', 'لم يتم العثور على الخطة');
         }
     }
+
+    
+    public function subscribe($planId)
+    {
+        // Get the currently authenticated user
+        $user = auth()->user();
+        
+        // Find the plan by its ID
+        $plan = Plan::findOrFail($planId);
+    
+        // Associate the plan with the user
+        $user->plan_id = $plan->id;
+        $user->save();
+    
+        // Redirect to profile with a success message
+        return redirect()->route('profile.show')->with('success', 'Subscription successful!');
+    }
+
 }
