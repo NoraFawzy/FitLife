@@ -3,7 +3,7 @@
 @section('content')
 
     <style>
-        .custom-btn {
+        .custom-btnn {
             background-color: var(--primary-color);
             color: var(--white-color);
             padding: 10px 30px;    border-radius: 5px;
@@ -12,7 +12,7 @@
             display: inline-block;
         }
 
-        .custom-btn:hover {
+        .custom-btnn:hover {
             color: var(--primary-color);
             background-color: var(--white-color); /* Change background color on hover, if desired */
         }
@@ -34,8 +34,9 @@
                     <div class="hero-text mt-5 text-center">
                         <h6 data-aos="fade-up" data-aos-delay="300">new way to build a healthy lifestyle!</h6>
                         <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your body at FitLife Hub</h1>
-                        <a href="#class" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
-                        <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
+                        <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
+
+                       <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +120,7 @@
         </div>
 
         <div style="text-align: center;">
-            <a href="{{ route('plans.index') }}" class="custom-btn">
+            <a href="{{ route('plans.index') }}" class="custom-btnn">
                 Subscription Plans
             </a>
         </div>
@@ -145,6 +146,7 @@
                         <th>Thu</th>
                         <th>Fri</th>
                         <th>Sat</th>
+                        <th>Sun</th>
                         </thead>
 
                         <tbody>
@@ -155,6 +157,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Yoga Section</strong><span>7:00 am - 9:00 am</span></td>
+                            
                         </tr>
                         <tr>
                             <td><small>9:00 am</small></td>
@@ -164,6 +167,9 @@
                             <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
                             <td></td>
                             <td><strong>Cardio</strong><span>8:00 am - 9:00 am</span></td>
+                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
+
+
                         </tr>
                         <tr>
                             <td><small>11:00 am</small></td>
@@ -181,6 +187,8 @@
                             <td><strong>Cardio</strong><span>6:00 pm - 9:00 pm</span></td>
                             <td></td>
                             <td><strong>Crossfit</strong><span>5:00 pm - 7:00 pm</span></td>
+                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
+
                         </tr>
                         </tbody>
                     </table>
