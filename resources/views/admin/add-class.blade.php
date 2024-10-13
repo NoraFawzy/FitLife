@@ -13,12 +13,15 @@
 
     <!-- Custom CSS -->
     <style>
-        .btn {
+        .btnn {
             color: #fff;
             background-color: #f13a11;
+            width: 100px;
+            padding: 5px;
+            border-radius: 10px;
         }
 
-        .btn:hover {
+        .btnn:hover {
             color: #fff;
             /* Text color on hover */
         }
@@ -107,7 +110,7 @@
 
                     <!-- Submit Button -->
                     <div class="form-group text-center">
-                        <button type="submit" class="btn" name="send">Add Class</button>
+                        <button type="submit" class="btnn" name="send">Add Class</button>
                     </div>
                 </form>
             </div>

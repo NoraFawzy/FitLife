@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
 
     <style>
-        .btn{
-            color:#fff;
+       .btnn {
+            color: #fff;
             background-color: #f13a11;
+            width: 100px;
+            padding: 5px;
+            border-radius: 10px;
         }
-        .btn:hover{
+
+        .btnn:hover {
             color: #fff;
         }
     </style>
@@ -39,7 +43,7 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn" name="send">Add Coach</button>
+                        <button type="submit" class="btnn" name="send">Add Coach</button>
                     </div>
                 </form>
             </div>

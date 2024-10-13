@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+<style>
+    .btnn {
+            color: #fff;
+            background-color: #f13a11;
+            width: 100px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .btnn:hover {
+            color: #fff;
+        }
+</style>
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center mp-5">
@@ -35,7 +48,7 @@
 
                     <!-- Submit Button -->
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn" name="send">Add Plan</button>
+                        <button type="submit" class="btnn" name="send">Add Plan</button>
                     </div>
                 </form>
             </div>
