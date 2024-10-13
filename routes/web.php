@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Ensure you have a separate route for editing
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    
+
 });
 
 
@@ -105,6 +108,9 @@ Route::get('/classes/{class}/edit', [ClassController::class, 'edit'])->name('cla
 Route::put('/classes/{class}', [ClassController::class, 'update'])->name('classes.update'); // Update a specific class
 Route::delete('/classes/{class}', [ClassController::class, 'destroy'])->name('classes.destroy'); // Delete a specific class
 
+Route::post('/join-class/{class}', [ClassController::class, 'joinClass'])->name('class.join');
+
+
 
 // Route for displaying classes to users
 Route::get('/index', [ClassController::class, 'userClasses'])->name('classes.user');
@@ -147,3 +153,5 @@ Route::middleware(['auth', 'admin'])->group(function (): void {
     Route::post('/emails/check/{id}', [ContactController::class, 'markAsChecked'])->name('emails.check');
 
 });
+
+

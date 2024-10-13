@@ -43,16 +43,24 @@
             <p data-aos="fade-up" data-aos-delay="500"><strong>Date:</strong> {{ $class->date }}</p>
 
             <!-- Enroll Button -->
-            <form action="{{ route('user_classes.store') }}" method="POST" class="mt-4" data-aos="fade-up" data-aos-delay="600">
+            <form action="{{ route('class.join', $class->id) }}" method="POST">
                 @csrf
-                <input type="hidden" name="class_id" value="{{ $class->id }}">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #f13a11;">Join Now!</button>
+                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #f13a11;" 
+                        onclick="return confirm('Are you sure you want to join this class?')">Join Now!</button>
             </form>
+
         </div>
     </div>
 </div>
 
     </div>
+    <script>
+    function joinClass() {
+        alert('Successfully Subscribed!');
+        
+        window.location.href = "{{ route('profile.show') }}"; 
+    }
+</script>
 </section>
 
 @endsection

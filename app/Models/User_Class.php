@@ -19,6 +19,8 @@ class User_Class extends Pivot
         'class_id', // Foreign key for classes
     ];
 
+    
+
 
 }
 

@@ -45,9 +45,6 @@
 </style>
 
 
-
-   
-
     <!-- HERO -->
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
         <video autoplay muted loop id="heroVideo" class="video-background">

@@ -36,5 +36,20 @@ class UserClassController extends Controller
 
         return redirect()->back()->with('success', 'You have been enrolled in the class successfully.');
     }
+    
+
+
+//     public function joinClass(Request $request, $classId)
+// {
+//     if (Auth::check()) {
+//         $user = Auth::user();
+        
+//         $user->classes()->attach($classId);
+        
+//         return redirect()->route('profile.show')->with('success', 'Successfully Subscribed!');
+//     }
+
+//     return redirect()->route('loginn');
+// }
 }
 

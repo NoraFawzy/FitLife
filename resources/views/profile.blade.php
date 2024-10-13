@@ -58,17 +58,17 @@
 
 </style>
 <div class="container" style="margin-top: 10%;">
-    <div class="row justify-content-center"> <!-- Use Bootstrap row to align cards -->
+    <div class="row justify-content-center"> 
 
         {{-- Show profile card for both admin and user --}}
         @if (Auth::user()->role === 'admin' || Auth::user()->role === 'user')
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> <!-- Responsive column for the first card -->
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                 <div class="card" style="height: 300px;">
-                    <div class="card-body text-center"> <!-- Center text in card body -->
+                    <div class="card-body text-center"> 
                         <h3 class="card-title mt-3">Profile Data</h3>
-                        <p class="card-text"><strong>Name:</strong> {{ $user->name }}</p> <!-- Bold Name -->
-                        <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p> <!-- Bold Email -->
-                        <div class="d-flex justify-content-center mt-5"> <!-- Center the button -->
+                        <p class="card-text"><strong>Name:</strong> {{ $user->name }}</p> 
+                        <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p> 
+                        <div class="d-flex justify-content-center mt-5"> 
                             <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
                         </div>
                     </div>
@@ -79,10 +79,10 @@
         {{-- Show the rest of the page only for user --}}
         @if (Auth::user()->role === 'user')
         
-   @if($user->is_subscribed && $plan) <!-- Check if the user is subscribed and if the plan exists -->
-    <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> <!-- Responsive column for the subscription card -->
+   @if($user->is_subscribed && $plan) 
+    <div class="col-lg-6 col-md-6 col-sm-12 mb-2"> 
         <div class="card" style="height: 300px;">
-            <div class="card-body text-center"> <!-- Center text in card body -->
+            <div class="card-body text-center">
                 <h3 class="card-title">My Subscription Plan</h3>
                 <p class="card-text"><strong>Plan Name:</strong> <span id="plan-name">{{ $plan->name }}</span></p> <!-- Bold Plan Name -->
                 <p class="card-text"><strong>Description:</strong> <span id="plan-desc">{{ $plan->desc }}</span></p> <!-- Bold Description -->
@@ -93,7 +93,7 @@
         </div>
     </div>
 @else
-    <p>No subscription plan available.</p> <!-- Optional: Handle case when no plan is found -->
+    <p>No subscription plan available.</p> 
 @endif
 
             {{-- Rest of the user-specific content --}}
@@ -107,58 +107,30 @@
                         </div>
 
                         <div class="col-lg-12 py-5 col-md-12 col-12">
-                            <table class="table table-bordered table-responsive schedulee-table" data-aos="fade-up" data-aos-delay="300">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th><i class="fa fa-calendar"></i></th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                        <th>Sun</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><small>7:00 am</small></td>
-                                        <td><strong>Cardio</strong><span>7:00 am - 9:00 am</span></td>
-                                        <td><strong>Power Fitness</strong><span>7:00 am - 9:00 am</span></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><strong>Yoga Section</strong><span>7:00 am - 9:00 am</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>9:00 am</small></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><strong>Boxing</strong><span>8:00 am - 9:00 am</span></td>
-                                        <td><strong>Aerobic</strong><span>8:00 am - 9:00 am</span></td>
-                                        <td></td>
-                                        <td><strong>Cardio</strong><span>8:00 am - 9:00 am</span></td>
-                                        <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>11:00 am</small></td>
-                                        <td></td>
-                                        <td><strong>Boxing</strong><span>11:00 am - 2:00 pm</span></td>
-                                        <td><strong>Aerobic</strong><span>11:30 am - 3:30 pm</span></td>
-                                        <td></td>
-                                        <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>2:00 pm</small></td>
-                                        <td><strong>Boxing</strong><span>2:00 pm - 4:00 pm</span></td>
-                                        <td><strong>Power lifting</strong><span>3:00 pm - 6:00 pm</span></td>
-                                        <td></td>
-                                        <td><strong>Cardio</strong><span>6:00 pm - 9:00 pm</span></td>
-                                        <td></td>
-                                        <td><strong>Crossfit</strong><span>5:00 pm - 7:00 pm</span></td>
-                                        <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Class Name</th>
+                                <th>Day</th> 
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Coach</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($user->classes as $class)
+                            <tr>
+                                <td>{{ $class->name }}</td>
+                                <td>{{ \Carbon\Carbon::parse($class->date)->format('l') }}</td> <!-- استخراج اليوم -->
+                                <td>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i A') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($class->end_time)->format('h:i A') }}</td>
+                                <td>{{ $class->coach->name ?? 'No Coach Assigned' }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+
                         </div>
                     </div>
                 </div>

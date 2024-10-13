@@ -101,4 +101,36 @@ class ClassController extends Controller
         $class->delete();
         return redirect()->route('classes.index')->with('success', 'Class deleted successfully.');
     }
+
+    public function joinClass($classId)
+{
+    // Get the currently authenticated user
+    $user = auth()->user();
+    
+    // Check if the user is authenticated
+    if (!$user) {
+        return redirect()->route('login')->with('error', 'You need to be logged in to join a class.');
+    }
+
+    // Find the class by its ID
+    $class = Classes::findOrFail($classId); // Assuming the model name is `ClassModel`
+
+    // Check if the user has already joined this class
+    if ($user->classes->contains($class->id)) {
+        alert()->warning('Warning', 'You have already joined this class.');
+        return redirect()->route('profile.show');
+    }
+
+    // Attach the class to the user (this will insert into the user_class table)
+    $user->classes()->attach($class->id, [
+        'joined_at' => now(), // Optionally, you can add additional fields like join date
+    ]);
+
+    // Save the user instance and return success
+    alert()->success('Success', 'Successfully joined the class.');
+    return redirect()->route('profile.show');
+}
+
+    
+
 }

@@ -10,7 +10,9 @@ return new class extends Migration
      * Run the migrations.
      *
      * @return void
+     * 
      */
+    
     public function up()
     {
         Schema::create('user_classes', function (Blueprint $table) {
