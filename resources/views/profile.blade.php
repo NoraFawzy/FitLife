@@ -97,6 +97,7 @@
 @endif
 
             {{-- Rest of the user-specific content --}}
+            
             <section class="schedulee section" id="schedule">
                 <div class="container">
                     <div class="row">
@@ -162,6 +163,7 @@
                     </div>
                 </div>
             </section>
+
         @endif
 
     </div> <!-- Close row -->
