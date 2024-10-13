@@ -40,7 +40,7 @@
                 <th scope="row">{{ $plan->id }}</th>
                 <td>{{ $plan->name }}</td>
                 <td>{{ explode('.', $plan->desc)[0] }}.</td> <!-- عرض أول جملة فقط من الوصف -->
-                <td>${{ $plan->price }}</td>
+                <td>{{ $plan->price }} EGP</td>
                 <td>{{ $plan->duration }}</td>
                 <td>
                     <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-primary btn-sm">Update</a>

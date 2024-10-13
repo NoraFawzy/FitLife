@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Http\Controllers\alert;
 use App\Mail\Contact as ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -59,12 +58,13 @@ class ContactController extends Controller
     public function destroy($id)
     {
         $contact = Contact::find($id);
-
+    
         if ($contact) {
             $contact->delete();
             alert()->success('Success', 'Email deleted successfully.');
             return redirect()->route('contacts');
         }
+    
         alert()->warning('Email not found.');
         return redirect()->route('contacts');
     }
@@ -72,29 +72,25 @@ class ContactController extends Controller
     public function reply(Request $request, $id)
     {
         $contact = Contact::find($id);
-
+    
         if (!$contact) {
             return redirect()->back()->with('error', 'Email not found.');
         }
-
-        // Validate the message input
+    
+        // Validate the reply message input
         $request->validate([
             'message' => 'required|string',
         ]);
-
-        // Send the email using the Contact Mailable
-       // Mail::to($contact->email)->send(new ContactMail($request->message));
-
-        alert()->success('Success', 'Email sent successfully.');
+    
+        // Save the admin's reply and mark as replied
+        $contact->admin_reply = $request->message;
+        $contact->is_replied = true;
+        $contact->save();
+    
+       
+    
+        alert()->success('Success', 'Reply sent successfully.');
         return redirect()->back();
     }
-
-    public function markAsChecked(Request $request, $id)
-    {
-        $email = Contact::find($id);
-        $email->is_checked = true; // Mark email as checked
-        $email->save();
-
-        return response()->json(['success' => true]);
-    }
+    
 }

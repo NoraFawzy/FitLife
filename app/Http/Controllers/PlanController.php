@@ -85,9 +85,9 @@ class PlanController extends Controller
                 'duration' => $validatedData['duration'],
             ]);
 
-            return redirect()->route('plans.indexx')->with('success', 'تم تحديث الخطة بنجاح');
+            return redirect()->route('plans.indexx')->with('success', 'Plan Updated Successfuly');
         } else {
-            return redirect()->back()->with('error', 'لم يتم العثور على الخطة');
+            return redirect()->back()->with('error', 'No plan found!');
         }
     }
 
@@ -98,9 +98,9 @@ class PlanController extends Controller
 
         if ($plan) {
             $plan->delete();
-            return redirect()->route('plans.indexx')->with('success', 'تم حذف الخطة بنجاح');
+            return redirect()->route('plans.indexx')->with('success', 'Plan Deleted Successfuly');
         } else {
-            return redirect()->back()->with('error', 'لم يتم العثور على الخطة');
+            return redirect()->back()->with('error', 'No plan found!');
         }
     }
 
@@ -115,19 +115,23 @@ class PlanController extends Controller
             return redirect()->route('loginn')->with('error', 'You need to be logged in to subscribe.');
         }
     
+        // Check if the user is an admin
+        if ($user->role === 'admin') { // Check if the user's role is 'admin'
+            alert()->error('Error', 'Admins cannot subscribe to plans.');
+            return redirect()->route('profile.show');
+        }
+    
         // Find the plan by its ID
         $plan = Plan::findOrFail($planId);
     
         // Check if the user is already subscribed to this plan
         if ($user->is_subscribed && $user->plan_id == $plan->id) {
-            // Show an alert if the user is already subscribed to this specific plan
             alert()->warning('Warning', 'You are already subscribed to this plan.');
             return redirect()->route('profile.show');
         }
     
         // Check if the user is subscribed to any other plan
         if ($user->is_subscribed) {
-            // Show an alert if the user is already subscribed to another plan
             alert()->error('Error', 'You are already subscribed to another plan.');
             return redirect()->route('profile.show');
         }
@@ -147,7 +151,6 @@ class PlanController extends Controller
             return redirect()->route('profile.show');
         }
     }
-    
     
     
     

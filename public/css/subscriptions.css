@@ -99,8 +99,8 @@ p.price span {
 
 p.price span:before {
   position: absolute;
-  content: "$";
-  font-size: 16px;
+  content: "L.E.";
+  font-size: 12px;
   top: 25px;
   font-weight: 300;
   left: 0;
