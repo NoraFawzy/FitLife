@@ -67,10 +67,10 @@
                     </button>
                     <div class="collapse mt-2" id="courses-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="{{ route('admin.coaches-list') }}" class="link-dark rounded aa">Add Coaches</a></li>
-                            <li><a href="{{route('create_coach')}}" class="link-dark rounded aa">View Coaches</a></li>
+                            <li><a href="{{ route('create_coach') }}" class="link-dark rounded aa">Add Coaches</a></li>
+                            <li><a href="{{route('admin.coaches-list')}}" class="link-dark rounded aa">View Coaches</a></li>
                         </ul>
-                    </div>
+                    </div>              
                 </li>
 
                 <li class="mb-1">

@@ -98,8 +98,9 @@
         <div class="row">
             <div class="col-lg-12 col-12 text-center mb-5">
                 <h6 data-aos="fade-up">Get A Perfect Body</h6>
-                <h2 data-aos="fade-up" data-aos-delay="200">Our Training Classes</h2>
-            </div>
+                <h2 data-aos="fade-up" data-aos-delay="200">
+    <a href="{{ route('classes-coaches') }}">Our Training Classes</a>
+</h2>            </div>
 
             <!-- عرض فقط 3 بطاقات -->
             @foreach($classesx->take(3) as $class)

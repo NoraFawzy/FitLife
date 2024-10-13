@@ -110,6 +110,7 @@ Route::delete('/classes/{class}', [ClassController::class, 'destroy'])->name('cl
 
 Route::post('/join-class/{class}', [ClassController::class, 'joinClass'])->name('class.join');
 
+Route::get('/classes-coaches', [ClassController::class, 'userCoaches'])->name('classes-coaches');
 
 
 // Route for displaying classes to users

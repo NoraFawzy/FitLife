@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 <!-- CLASS -->
 <section class="class section" id="class">
     <div class="container">
@@ -12,42 +11,20 @@
                 <h2 data-aos="fade-up" data-aos-delay="200">Our Training Classes</h2>
             </div>
 
-            <!-- Cards -->
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/yoga-class.jpg') }}" class="img-fluid" alt="Class">
-                    <div class="class-info">
-                        <h3 class="mb-1">Yoga</h3>
-                        <span><strong>Trained by</strong> - Bella</span>
-                        <span class="class-price">$50</span>
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+            <!-- Loop through classes -->
+            @foreach($classesx as $class)
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-thumb">
+                        <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="{{ $class->name }}">
+                        <div class="class-info">
+                            <h3 class="mb-1">{{ $class->name }}</h3>
+                            <span><strong>Trained by</strong> - {{ $class->coach->name ?? 'No coach assigned' }}</span>
+                            <span class="class-price">${{ $class->price }}</span>
+                            <p class="mt-3">{{ $class->description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="500">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Class">
-                    <div class="class-info">
-                        <h3 class="mb-1">Aerobic</h3>
-                        <span><strong>Trained by</strong> - Mary</span>
-                        <span class="class-price">$66</span>
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/cardio-class.jpg') }}" class="img-fluid" alt="Class">
-                    <div class="class-info">
-                        <h3 class="mb-1">Cardio</h3>
-                        <span><strong>Trained by</strong> - Cathe</span>
-                        <span class="class-price">$75</span>
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
@@ -56,7 +33,7 @@
 <hr>
 
 <!-- Coaches -->
-<section class="class section" id="class">
+<section class="class section" id="coaches">
     <div class="container">
         <div class="row">
 
@@ -66,38 +43,19 @@
                 <h2 data-aos="fade-up" data-aos-delay="200">Our Coaches</h2>
             </div>
 
-            <!-- Cards -->
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/yoga-class.jpg') }}" class="img-fluid" alt="Coach">
-                    <div class="class-info">
-                        <h3 class="mb-1">Anne</h3>
-                        <p class="mt-3">experience level</p>
+            <!-- Loop through coaches -->
+            @foreach($coaches as $coach)
+                <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-thumb">
+                        <img src="{{ asset('images/class/yoga-class.jpg') }}" class="img-fluid" alt="Coach">
+                        <div class="class-info">
+                            <h3 class="mb-1">{{ $coach->name }}</h3>
+                            <p class="mt-3">{{ $coach->experience }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="500">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Coach">
-                    <div class="class-info">
-                        <h3 class="mb-1">Anne</h3>
-                        <p class="mt-3">experience level</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="class-thumb">
-                    <img src="{{ asset('images/class/cardio-class.jpg') }}" class="img-fluid" alt="Coach">
-                    <div class="class-info">
-                        <h3 class="mb-1">Anne</h3>
-                        <p class="mt-3">experience level</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>
 </section>
-

@@ -57,4 +57,6 @@ class CoachController extends Controller
         $coach->delete();
         return redirect()->route('coaches.index')->with('success', 'Coach deleted successfully.');
     }
+
+  
 }
