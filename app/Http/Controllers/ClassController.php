@@ -16,11 +16,18 @@ class ClassController extends Controller
         return view('admin.classes-list', compact('classesx'));
     }
 
+    // public function userClasses()
+    // {
+    //     $classesx = Classes::all(); // Fetch all classes
+    //     return view('index', compact('classesx')); // Return the view with the classes
+    // }
+
     public function userClasses()
-    {
-        $classesx = Classes::all(); // Fetch all classes
-        return view('index', compact('classesx')); // Return the view with the classes
-    }
+{
+    $classesx = Classes::all(); // Fetch all classes
+    return view('index', compact('classesx')); // Return the view with the classes
+}
+
 
 
     public function show($id)
@@ -47,6 +54,8 @@ class ClassController extends Controller
             'price' => 'required|numeric',
             'date' => 'required|date',
             'coach_id' => 'nullable|exists:coaches,id',
+            'start_time' => 'required|date_format:H:i', // Validation for start time
+            'end_time' => 'required|date_format:H:i',   // Validation for end time
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
         ]);
 

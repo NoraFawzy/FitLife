@@ -16,8 +16,36 @@
             color: var(--primary-color);
             background-color: var(--white-color); /* Change background color on hover, if desired */
         }
+      
+    .class-thumb {
+        height: 200px; 
+        overflow: hidden;
+    }
 
-    </style>
+    .class-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .class-info {
+        height: 150px; 
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-lg-4, .col-md-6, .col-12 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+</style>
+
+
+
    
 
     <!-- HERO -->
@@ -76,14 +104,15 @@
                 <h2 data-aos="fade-up" data-aos-delay="200">Our Training Classes</h2>
             </div>
 
-            @foreach($classesx as $class)
+            <!-- عرض فقط 3 بطاقات -->
+            @foreach($classesx->take(3) as $class)
             <div class="col-lg-4 col-md-6 col-12 mb-5" data-aos="fade-up" data-aos-delay="400">
                 <a href="{{route('class_sub' ,$class->id )}}" class="class-card-link">
                     <div class="class-thumb">
                         @if($class->image)
-                        <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="Class Image - {{ $class->name }}">
+                        <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid class-image" alt="Class Image - {{ $class->name }}">
                         @else
-                        <img src="{{ asset('images/default-class.jpg') }}" class="img-fluid" alt="Default Class Image">
+                        <img src="{{ asset('images/default-class.jpg') }}" class="img-fluid class-image" alt="Default Class Image">
                         @endif
                     </div>
 
@@ -91,89 +120,99 @@
                         <h3 class="mb-1">{{ $class->name }}</h3>
                         <span class="class-price" style="margin-top: -5px; width:80px">${{ $class->price }}</span>
                         <h5>Trained by: {{ optional($class->coach)->name ?? 'No Coach Assigned' }}</h5>
-                        </div>
+                    </div>
                 </a>
             </div>
             @endforeach
         </div>
     </div>
+
     <div style="text-align: center;">
-            <a href="{{ route('plans.index') }}" class="custom-btnn">
-                Subscription Plans
-            </a>
-        </div>
-        </section>
+        <a href="{{ route('plans.index') }}" class="custom-btnn">
+            Subscription Plans
+        </a>
+    </div>
+</section>
 
 
-    <!-- SCHEDULE -->
-    <section class="schedule section" id="schedule">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 text-center">
-                    <h6 data-aos="fade-up">our weekly GYM schedules</h6>
-                    <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Workout Timetable</h2>
-                </div>
+    
+        <section class="schedule section" id="schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center">
+                <h6 data-aos="fade-up">Our Weekly GYM Schedules</h6>
+                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Workout Timetable</h2>
+            </div>
 
-                <div class="col-lg-12 py-5 col-md-12 col-12">
-                    <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
-                        <thead class="thead-light">
-                        <th><i class="fa fa-calendar"></i></th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                        <th>Sun</th>
-                        </thead>
-
-                        <tbody>
+            <div class="col-lg-12 py-5 col-md-12 col-12">
+                <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
+                    <thead class="thead-light">
                         <tr>
-                            <td><small>7:00 am</small></td>
-                            <td><strong>Cardio</strong><span>7:00 am - 9:00 am</span></td>
-                            <td><strong>Power Fitness</strong><span>7:00 am - 9:00 am</span></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Yoga Section</strong><span>7:00 am - 9:00 am</span></td>
-                            
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
                         </tr>
-                        <tr>
-                            <td><small>9:00 am</small></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Boxing</strong><span>8:00 am - 9:00 am</span></td>
-                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
-                            <td></td>
-                            <td><strong>Cardio</strong><span>8:00 am - 9:00 am</span></td>
-                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
-
-
-                        </tr>
-                        <tr>
-                            <td><small>11:00 am</small></td>
-                            <td></td>
-                            <td><strong>Boxing</strong><span>11:00 am - 2:00 pm</span></td>
-                            <td><strong>Areobic</strong><span>11:30 am - 3:30 pm</span></td>
-                            <td></td>
-                            <td><strong>Body work</strong><span>11:50 am - 5:20 pm</span></td>
-                        </tr>
-                        <tr>
-                            <td><small>2:00 pm</small></td>
-                            <td><strong>Boxing</strong><span>2:00 pm - 4:00 pm</span></td>
-                            <td><strong>Power lifting</strong><span>3:00 pm - 6:00 pm</span></td>
-                            <td></td>
-                            <td><strong>Cardio</strong><span>6:00 pm - 9:00 pm</span></td>
-                            <td></td>
-                            <td><strong>Crossfit</strong><span>5:00 pm - 7:00 pm</span></td>
-                            <td><strong>Areobic</strong><span>8:00 am - 9:00 am</span></td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    </thead>
+                    <tbody>
+                        <!-- Loop over the fetched classes and display them in the table -->
+                        @foreach($classesx as $class)
+                            <tr>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Monday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Tuesday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Wednesday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Thursday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Friday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Saturday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(\Carbon\Carbon::parse($class->date)->format('l') == 'Sunday')
+                                        <strong>{{ $class->name }}</strong>
+                                        <span>{{ \Carbon\Carbon::parse($class->start_time)->format('h:i a') }} - {{ \Carbon\Carbon::parse($class->end_time)->format('h:i a') }}</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <!-- CONTACT -->
     <section class="contact section" id="contact">
@@ -193,8 +232,8 @@
             </div>
 
             <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">We're happy</h2>
-                <p><i></i>to help you</p>
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">We're happy   <p>to help you</p></h2>
+              
             </div>
         </div>
     </div>

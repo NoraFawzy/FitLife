@@ -57,23 +57,40 @@
                         @enderror
                     </div>
 
+                    <!-- حقل التاريخ مع خاصية min لمنع اختيار تاريخ قديم -->
                     <div class="form-group mb-3">
                         <label for="date">Class Date</label>
-                        <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required value="{{ old('date') }}">
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required value="{{ old('date') }}" min="{{ date('Y-m-d') }}">
                         @error('date')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
-                        <div class="form-group mb-3">
-                            <label for="image">Class Image</label>
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
-                            @error('image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <!-- Start Time Field -->
+                    <div class="form-group mb-3">
+                        <label for="start_time">Start Time</label>
+                        <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="start_time" name="start_time" required value="{{ old('start_time') }}">
+                        @error('start_time')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
+                    <!-- End Time Field -->
+                    <div class="form-group mb-3">
+                        <label for="end_time">End Time</label>
+                        <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="end_time" name="end_time" required value="{{ old('end_time') }}">
+                        @error('end_time')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
+                    <div class="form-group mb-3">
+                        <label for="image">Class Image</label>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                        @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                     <div class="form-group mb-3">
                         <label for="coach_id">Assign Coach</label>
@@ -96,6 +113,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dateInput = document.getElementById('date');
+            const startTimeInput = document.getElementById('start_time');
+            const endTimeInput = document.getElementById('end_time');
+            const today = new Date();
+
+            dateInput.addEventListener('change', function () {
+                const selectedDate = new Date(this.value);
+                
+                if (selectedDate.toDateString() === today.toDateString()) {
+                    const currentTime = today.toISOString().substr(11, 5);
+                    startTimeInput.min = currentTime;
+                    endTimeInput.min = currentTime;
+                } else {
+                    startTimeInput.min = '';
+                    endTimeInput.min = '';
+                }
+            });
+        });
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -13,13 +13,16 @@ class Classes extends Model
 
     // Specify the fillable fields (columns) that can be mass-assigned
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'date',
-        'coach_id',
-        'image'
-    ];
+      'name',
+      'description',
+      'price',
+      'date',
+      'coach_id',
+      'image',
+      'start_time',  
+      'end_time',    
+  ];
+  
 
 
 
