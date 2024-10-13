@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <h1 class="text-center mb-4" style="color:#E85C0D;">Emails List</h1>
+<div class="container mt-5 ">
+    <h1 class="text-center mb-4 mt-5" style="color:#E85C0D; padding-top:35px;">Emails List</h1>
 
     @if (session('success'))
     <div class="alert alert-success">
@@ -10,7 +10,7 @@
     </div>
     @endif
 
-    <div class="d-flex justify-content-between mb-4">
+    <div class="d-flex justify-content-between mb-4 ">
         <!-- Search Field -->
         <form action="{{ route('contacts') }}" method="GET" class="form-inline">
             <input type="text" name="search" class="form-control form-control-lg" placeholder="Search by name or email..." value="{{ request()->query('search') }}">

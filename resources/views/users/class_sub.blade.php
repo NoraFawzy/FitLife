@@ -18,42 +18,40 @@
 
 <!-- CLASS DETAILS -->
 <section class="class section" id="class">
-    <div class="container">
-        <div class="row justify-content-center">
 
-            <!-- Title -->
-            <div class="col-lg-12 col-12 text-center mb-5">
-                <h6 data-aos="fade-up">Class Details</h6>
-                <h2 data-aos="fade-up" data-aos-delay="200">{{ $class->name }}</h2>
-            </div>
-
-            <!-- Class Info -->
-            <div class="col-lg-6 col-md-8 col-sm-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="class-thumb">
-                    @if($class->image)
-                    <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="Class Image">
-                    @else
-                    <img src="{{ asset('images/default-class.jpg') }}" class="img-fluid" alt="Default Class Image">
-                    @endif
-                </div>
-
-                <div class="class-info mt-4">
-                    <h3>Trained by: {{ $class->coach->name ?? 'No Coach Assigned' }}</h3>
-                    <span class="class-price">${{ $class->price }}</span>
-                    <p class="mt-3">{{ $class->description }}</p>
-                    <p><strong>Date:</strong> {{ $class->date }}</p>
-
-                    <!-- Enroll Button -->
-                    <form action="{{ route('user_classes.store') }}" method="POST" class="mt-3">
-                        @csrf
-                        <input type="hidden" name="class_id" value="{{ $class->id }}">
-                        <button type="submit" class="btn custom-btn">Enroll Now</button>
-                    </form>
-                </div>
+<div class="container " style="margin-top:5rem; margin-bottom:10rem; ">
+    <div class="row align-items-center">
+        <!-- Class Image -->
+        <div class="col-md-6" style="max-height:400px; max-width:500px; margin-right:50px;">
+            <div class="class-thumb">
+                @if($class->image)
+                <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid rounded shadow" alt="Class Image">
+                @else
+                <img src="{{ asset('images/default-class.jpg') }}" class="img-fluid rounded shadow" alt="Default Class Image">
+                @endif
             </div>
         </div>
 
+        <!-- Class Info -->
+        <div class="col-md-6">
+            <h1 class="display-4 mb-3" style="color:#E85C0D;" data-aos="fade-up">{{ $class->name }}</h1>
+            <h4 class="mb-3" data-aos="fade-up" data-aos-delay="200">Trained by - <span class="text-primary">{{ $class->coach->name ?? 'No Coach Assigned' }}</span></h4>
+            <h5 class="mb-3 text-danger" data-aos="fade-up" data-aos-delay="300">Price: ${{ $class->price }}</h5>
+            <p class="lead" data-aos="fade-up" data-aos-delay="400">
+                {{ $class->description }}
+            </p>
+            <p data-aos="fade-up" data-aos-delay="500"><strong>Date:</strong> {{ $class->date }}</p>
+
+            <!-- Enroll Button -->
+            <form action="{{ route('user_classes.store') }}" method="POST" class="mt-4" data-aos="fade-up" data-aos-delay="600">
+                @csrf
+                <input type="hidden" name="class_id" value="{{ $class->id }}">
+                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #f13a11;">Join Now!</button>
+            </form>
+        </div>
     </div>
+</div>
+
     </div>
 </section>
 
