@@ -15,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/loginn', function () {
-  return view('/loginn');
-});
-
+    return view('loginn'); 
+})->name('loginn'); // Give it a name
 
   Route::get('/subscriptions', function () {
     return view('users.subscriptions');
@@ -34,9 +33,6 @@ Route::get('/classes-coaches', function () {
 })->name('classes');
 
 
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); // Change to show method
@@ -73,10 +69,81 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Route to display all plans (no admin restriction)
 Route::get('/subscriptions', [PlanController::class, 'index'])->name('plans.index');
 
-
+//3ndy ana bs
 Route::get('/class', function () {
   return view('users.showClasses');
 })->name('class.show');
 
 //enable subscribing btn
 Route::post('/subscribe/{planId}', [PlanController::class, 'subscribe'])->name('subscribe');
+//l7d hna
+
+
+//elgded
+
+//Coaches Routes
+
+use App\Http\Controllers\CoachController;
+
+Route::resource('coaches', CoachController::class);
+Route::get('/admin/coaches-list', [CoachController::class, 'index'])->name('admin.coaches-list');
+Route::get('/admin/add-coach', [CoachController::class, 'create'])->name('create_coach');
+Route::post('/admin/coaches-list', [CoachController::class, 'store'])->name('coach.store');
+
+
+
+
+
+
+use App\Http\Controllers\ClassController;
+// Routes for ClassController
+Route::get('/admin/classes-list', [ClassController::class, 'index'])->name('classes.index'); // List all classes
+Route::get('/admin/add-class', [ClassController::class, 'create'])->name('classes.create'); // Show form for new class
+Route::post('/admin/classes-list', [ClassController::class, 'store'])->name('classes.store'); // Store new class
+Route::get('/classes/{class}', [ClassController::class, 'show'])->name('classes.show'); // Show a specific class
+Route::get('/classes/{class}/edit', [ClassController::class, 'edit'])->name('classes.edit'); // Show form for editing a specific class
+Route::put('/classes/{class}', [ClassController::class, 'update'])->name('classes.update'); // Update a specific class
+Route::delete('/classes/{class}', [ClassController::class, 'destroy'])->name('classes.destroy'); // Delete a specific class
+
+
+// Route for displaying classes to users
+Route::get('/index', [ClassController::class, 'userClasses'])->name('classes.user');
+//Userclasses
+
+use App\Http\Controllers\UserClassController;
+// Route::get('/user-classes', [UserClassController::class, 'index'])->name('userClasses.index'); // List all user-class associations
+// Route::post('/user-classes', [UserClassController::class, 'store'])->name('userClasses.store'); // Enroll a user in a class
+// Route::delete('/user-classes/{userClass}', [UserClassController::class, 'destroy'])->name('userClasses.destroy'); // Remove user from a class
+
+
+
+//Route::get('/', [ClassController::class, 'subscribeForm'])->name('classes.subscribe');
+Route::get('/users/class_sub/{id}', [ClassController::class, 'show'])->name('class_sub');
+
+
+
+
+Route::post('users/class_sub', [UserClassController::class, 'store'])->middleware('auth')->name('user_classes.store');
+
+
+
+
+
+// contact
+
+
+use App\Http\Controllers\ContactController;
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+Route::middleware(['auth', 'admin'])->group(function (): void {
+    Route::get('/admin/contact', [ContactController::class, 'index'])->name('contacts');
+    Route::post('/contacts/{id}/checked', [ContactController::class, 'updateCheckedStatus'])->name('contacts.updateChecked');
+    Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+    Route::post('/emails/reply/{id}', [ContactController::class, 'reply'])->name('emails.reply');
+    // Example route in web.php
+    // Route::post('/emails/check/{id}', [ContactController::class, 'markAsChecked']);
+    Route::post('/emails/check/{id}', [ContactController::class, 'markAsChecked'])->name('emails.check');
+
+});

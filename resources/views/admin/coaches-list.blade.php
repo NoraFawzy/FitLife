@@ -1,4 +1,5 @@
-@extends('layouts.app') 
+@extends('layouts.app')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <title>Coaches List</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body class="mt-5 pt-5">
 
@@ -16,6 +17,7 @@
     </h1>
 
     <div class="container mt-3">
+        <a href="{{ route('create_coach') }}" class="btn btn-success mb-3">Add New Coach</a>
         <table class="table table-striped table-bordered">
             <thead class="text-light" style="background-color: #E85C0D;">
                 <tr>
@@ -26,16 +28,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John Doe</td>
-                    <td>10 years of experience in fitness coaching</td>
-                    <td>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                        <a href="#" class="btn btn-primary btn-sm">Update</a>
-                    </td>
-                </tr>
-                <!-- Repeat <tr> block for more rows -->
+                @foreach ($coaches as $coach)
+                    <tr>
+                        <th scope="row">{{ $coach->id }}</th>
+                        <td>{{ $coach->name }}</td>
+                        <td>{{ $coach->experience }}</td>
+                        <td>
+                            <a href="{{ route('coaches.edit', $coach->id) }}" class="btn btn-primary btn-sm">Update</a>
+                            <form action="{{ route('coaches.destroy', $coach->id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -43,6 +50,5 @@
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

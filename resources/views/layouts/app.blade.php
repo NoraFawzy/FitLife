@@ -29,6 +29,9 @@
 
     <!-- Include Footer -->
     @include('partials.footer')
+    
+    @include('sweetalert::alert')
+
 
     <!-- SCRIPTS -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

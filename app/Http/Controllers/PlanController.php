@@ -112,7 +112,7 @@ class PlanController extends Controller
         
         // Check if the user is authenticated
         if (!$user) {
-            return redirect()->route('login')->with('error', 'You need to be logged in to subscribe.');
+            return redirect()->route('loginn')->with('error', 'You need to be logged in to subscribe.');
         }
     
         // Find the plan by its ID
@@ -125,8 +125,9 @@ class PlanController extends Controller
         // Save the user instance
         if ($user->save()) {
             // Redirect to profile with a success message
-            return redirect()->route('profile.show')->with('success', 'Subscription successful!');
-        } else {
+            alert()->success('Success', 'Successfully subscribed to the plan.');
+            return redirect()->route('profile.show');
+                } else {
             // Handle the case when saving fails
             return redirect()->route('profile.show')->with('error', 'Subscription failed. Please try again.');
         }

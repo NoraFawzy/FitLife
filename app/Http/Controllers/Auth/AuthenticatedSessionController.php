@@ -17,7 +17,7 @@ use Illuminate\Validation\ValidationException;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the  view.
      */
     public function create(): View
     {

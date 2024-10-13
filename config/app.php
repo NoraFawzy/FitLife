@@ -120,6 +120,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    
 
     'key' => env('APP_KEY'),
 
@@ -171,6 +172,7 @@ return [
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
         Illuminate\Pipeline\PipelineServiceProvider::class,
@@ -211,5 +213,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
+
 
 ];

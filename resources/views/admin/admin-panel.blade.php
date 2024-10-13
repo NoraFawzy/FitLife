@@ -38,8 +38,8 @@
                     </button>
                     <div class="collapse mt-2" id="news-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded aa">Add Classes</a></li>
-                            <li><a href="#" class="link-dark rounded aa">View Classes</a></li>
+                            <li><a href="{{route('classes.create')}}" class="link-dark rounded aa">Add Classes</a></li>
+                            <li><a href="{{ route('classes.index') }}" class="link-dark rounded aa">View Classes</a></li>
                         </ul>
                     </div>
                 </li>
@@ -67,21 +67,16 @@
                     </button>
                     <div class="collapse mt-2" id="courses-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded aa">Add Coaches</a></li>
-                            <li><a href="#" class="link-dark rounded aa">View Coaches</a></li>
+                            <li><a href="{{ route('admin.coaches-list') }}" class="link-dark rounded aa">Add Coaches</a></li>
+                            <li><a href="{{route('create_coach')}}" class="link-dark rounded aa">View Coaches</a></li>
                         </ul>
                     </div>
                 </li>
 
                 <li class="mb-1">
-                    <a href="#" class="btn btn-block btn-outline align-items-center rounded collapsed">
+                    <a href="{{route('contacts')}}" class="btn btn-block btn-outline align-items-center rounded collapsed">
                         List Messages</a>
                 </li>
-                <li class="mb-1">
-                    <a href="{{ url('/profile') }}" class="btn btn-block btn-outline align-items-center rounded collapsed ">
-                        My Profile</a>
-                </li>
-
             </ul>
         </div>
     </div>

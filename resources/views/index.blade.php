@@ -18,6 +18,7 @@
         }
 
     </style>
+   
 
     <!-- HERO -->
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
@@ -66,66 +67,43 @@
         </div>
     </section>
 
-    <!-- CLASS -->
-    <section class="class section" id="class">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 text-center mb-5">
-                    <h6 data-aos="fade-up">Get A Perfect Body</h6>
-                    <h2 data-aos="fade-up" data-aos-delay="200"><a href="{{ route('classes') }}">Our Training Classes</a></h2>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
-                    <a href="{{ route('class.show') }}" class="class-card-link">
-                        <div class="class-thumb">
-                            <img src="{{ asset('images/class/yoga-class.jpg') }}" class="img-fluid" alt="Class">
-                            <div class="class-info">
-                                <h3 class="mb-1">Yoga</h3>
-                                <span><strong>Trained by</strong> - Bella</span>
-                                <span class="class-price">$50</span>
-                                <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
-                    <a href="{{ route('class.show') }}" class="class-card-link">
-                        <div class="class-thumb">
-                            <img src="{{ asset('images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Class">
-                            <div class="class-info">
-                                <h3 class="mb-1">Areobic</h3>
-                                <span><strong>Trained by</strong> - Mary</span>
-                                <span class="class-price">$66</span>
-                                <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                    <a href="{{ route('class.show') }}" class="class-card-link">
-                        <div class="class-thumb">
-                            <img src="{{ asset('images/class/cardio-class.jpg') }}" class="img-fluid" alt="Class">
-                            <div class="class-info">
-                                <h3 class="mb-1">Cardio</h3>
-                                <span><strong>Trained by</strong> - Cathe</span>
-                                <span class="class-price">$75</span>
-                                <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+<!-- CLASS -->
+<section class="class section" id="class">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <h6 data-aos="fade-up">Get A Perfect Body</h6>
+                <h2 data-aos="fade-up" data-aos-delay="200">Our Training Classes</h2>
             </div>
-        </div>
 
-        <div style="text-align: center;">
+            @foreach($classesx as $class)
+            <div class="col-lg-4 col-md-6 col-12 mb-5" data-aos="fade-up" data-aos-delay="400">
+                <a href="{{route('class_sub' ,$class->id )}}" class="class-card-link">
+                    <div class="class-thumb">
+                        @if($class->image)
+                        <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="Class Image - {{ $class->name }}">
+                        @else
+                        <img src="{{ asset('images/default-class.jpg') }}" class="img-fluid" alt="Default Class Image">
+                        @endif
+                    </div>
+
+                    <div class="class-info">
+                        <h3 class="mb-1">{{ $class->name }}</h3>
+                        <span class="class-price" style="margin-top: -5px; width:80px">${{ $class->price }}</span>
+                        <h5>Trained by: {{ optional($class->coach)->name ?? 'No Coach Assigned' }}</h5>
+                        </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <div style="text-align: center;">
             <a href="{{ route('plans.index') }}" class="custom-btnn">
                 Subscription Plans
             </a>
         </div>
+        </section>
 
-    </section>
 
     <!-- SCHEDULE -->
     <section class="schedule section" id="schedule">
@@ -199,24 +177,44 @@
 
     <!-- CONTACT -->
     <section class="contact section" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="ml-auto col-lg-5 col-md-6 col-12">
-                    <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
-                    <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                        <input type="text" class="form-control" name="cf-name" placeholder="Name">
-                        <input type="email" class="form-control" name="cf-email" placeholder="Email">
-                        <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
-                        <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
-                    </form>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="ml-auto col-lg-5 col-md-6 col-12">
+                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
 
-                <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">We're happy</h2>
-                    <p ><i ></i>to help you</p>
-                </div>
+                <!-- Contact Form -->
+                <form action="{{ route('contact.store') }}" method="POST" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form" id="contact">
+                    @csrf
+                    <input type="text" class="form-control" name="cf-name" placeholder="Name" required>
+                    <input type="email" class="form-control" name="cf-email" placeholder="Email" required>
+                    <textarea class="form-control" rows="5" name="cf-message" placeholder="Message" required></textarea>
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">We're happy</h2>
+                <p><i></i>to help you</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+<script>
+    function validateForm() {
+        let name = document.getElementById('cf-name').value;
+        let email = document.getElementById('cf-email').value;
+        let message = document.getElementById('cf-message').value;
+        if (!name || !email || !message) {
+            alert("All fields must be filled out");
+            return false;
+        }
+        return true;
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @endsection
+
+
