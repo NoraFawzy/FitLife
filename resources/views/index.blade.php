@@ -115,7 +115,7 @@
 
                     <div class="class-info">
                         <h3 class="mb-1">{{ $class->name }}</h3>
-                        <span class="class-price" style="margin-top: -5px; width:80px">${{ $class->price }}</span>
+                        <span class="class-price" style="margin-top: -5px; width:80px">{{ $class->price }} L.E.</span>
                         <h5>Trained by: {{ optional($class->coach)->name ?? 'No Coach Assigned' }}</h5>
                     </div>
                 </a>

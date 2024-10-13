@@ -36,7 +36,7 @@
         <div class="col-md-6">
             <h1 class="display-4 mb-3" style="color:#E85C0D;" data-aos="fade-up">{{ $class->name }}</h1>
             <h4 class="mb-3" data-aos="fade-up" data-aos-delay="200">Trained by - <span class="text-primary">{{ $class->coach->name ?? 'No Coach Assigned' }}</span></h4>
-            <h5 class="mb-3 text-danger" data-aos="fade-up" data-aos-delay="300">Price: ${{ $class->price }}</h5>
+            <h5 class="mb-3 text-danger" data-aos="fade-up" data-aos-delay="300">Price: EGP {{ $class->price }}</h5>
             <p class="lead" data-aos="fade-up" data-aos-delay="400">
                 {{ $class->description }}
             </p>
