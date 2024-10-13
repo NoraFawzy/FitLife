@@ -117,7 +117,21 @@ class PlanController extends Controller
     
         // Find the plan by its ID
         $plan = Plan::findOrFail($planId);
-        
+    
+        // Check if the user is already subscribed to this plan
+        if ($user->is_subscribed && $user->plan_id == $plan->id) {
+            // Show an alert if the user is already subscribed to this specific plan
+            alert()->warning('Warning', 'You are already subscribed to this plan.');
+            return redirect()->route('profile.show');
+        }
+    
+        // Check if the user is subscribed to any other plan
+        if ($user->is_subscribed) {
+            // Show an alert if the user is already subscribed to another plan
+            alert()->error('Error', 'You are already subscribed to another plan.');
+            return redirect()->route('profile.show');
+        }
+    
         // Update the user's subscription status and associate the plan
         $user->is_subscribed = true; // Set subscription status to true
         $user->plan_id = $plan->id;  // Associate the plan with the user
@@ -127,11 +141,14 @@ class PlanController extends Controller
             // Redirect to profile with a success message
             alert()->success('Success', 'Successfully subscribed to the plan.');
             return redirect()->route('profile.show');
-                } else {
+        } else {
             // Handle the case when saving fails
-            return redirect()->route('profile.show')->with('error', 'Subscription failed. Please try again.');
+            alert()->error('Error', 'Subscription failed. Please try again.');
+            return redirect()->route('profile.show');
         }
     }
+    
+    
     
     
 }
