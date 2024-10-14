@@ -19,7 +19,7 @@
             background-color: #f8f9fa;
             border-radius: 8px;
             padding: 30px;
-            width: 50%; /* تغيير العرض إلى 50% */
+            width: 50%; 
         }
 
         /* Admin Panel Title */
@@ -62,8 +62,10 @@
             padding: 10px;
             display: block;
             border-radius: 6px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             transition: background-color 0.3s;
+            text-align: center;
+            font-size:15px;
         }
 
         .list-unstyled a:hover {
@@ -79,6 +81,7 @@
         /* Additional Padding */
         .admin-container {
             margin-top: 80px;
+            margin-bottom: 2%;
         }
 
     </style>
@@ -86,16 +89,16 @@
 
 <body class="mt-5 pt-5">
     <div class="container admin-container">
-        <div class="d-flex justify-content-center"> <!-- تعديل العرض ليكون في الوسط -->
-            <div class="admin-panel">
+        <div class="d-flex justify-content-center"> 
+            <div class="admin-panel" id="accordion">
                 <p class="text-center admin-title">Admin Panel</p>
                 <ul class="list-unstyled">
                     <!-- Classes Section -->
                     <li class="mb-1">
-                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#news-collapse">
+                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#news-collapse" aria-expanded="false" aria-controls="news-collapse">
                             <i class="fas fa-chalkboard-teacher"></i> Classes
                         </button>
-                        <div class="collapse mt-2" id="news-collapse">
+                        <div class="collapse mt-2" id="news-collapse" data-bs-parent="#accordion">
                             <ul class="list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{route('classes.create')}}" class="aa"><i class="fas fa-plus"></i> Add Classes</a></li>
                                 <li><a href="{{ route('classes.index') }}" class="aa"><i class="fas fa-eye"></i> View Classes</a></li>
@@ -105,10 +108,10 @@
 
                     <!-- Subscription plans Section -->
                     <li class="mb-1">
-                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#plans-collapse" aria-expanded="false">
+                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#plans-collapse" aria-expanded="false" aria-controls="plans-collapse">
                             <i class="fas fa-clipboard-list"></i> Subscription Plans
                         </button>
-                        <div class="collapse mt-2" id="plans-collapse">
+                        <div class="collapse mt-2" id="plans-collapse" data-bs-parent="#accordion">
                             <ul class="list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('plans.create') }}" class="aa"><i class="fas fa-plus"></i> Add Plans</a></li>
                                 <li><a href="{{ route('plans.indexx') }}" class="aa"><i class="fas fa-eye"></i> View Plans</a></li>
@@ -118,10 +121,10 @@
 
                     <!-- Coaches Section -->
                     <li class="mb-1">
-                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#coaches-collapse" aria-expanded="false">
+                        <button class="btn btn-block btn-outline" data-bs-toggle="collapse" data-bs-target="#coaches-collapse" aria-expanded="false" aria-controls="coaches-collapse">
                             <i class="fas fa-user-tie"></i> Coaches
                         </button>
-                        <div class="collapse mt-2" id="coaches-collapse">
+                        <div class="collapse mt-2" id="coaches-collapse" data-bs-parent="#accordion">
                             <ul class="list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{ route('create_coach') }}" class="aa"><i class="fas fa-plus"></i> Add Coaches</a></li>
                                 <li><a href="{{route('admin.coaches-list')}}" class="aa"><i class="fas fa-eye"></i> View Coaches</a></li>
