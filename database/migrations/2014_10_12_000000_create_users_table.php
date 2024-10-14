@@ -22,7 +22,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->unsignedBigInteger('plan_id')->nullable()->after('id');
+            $table->unsignedBigInteger('plan_id')->nullable();
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('set null');
             $table->boolean('is_subscribed')->default(false); // Add the is_subscribed column
 
@@ -38,6 +38,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-      
+
     }
 };
