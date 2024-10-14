@@ -22,6 +22,11 @@
       font-style: normal;
   }
 
+  html {
+    scroll-behavior: smooth;
+}
+
+
   :root {
     --primary-color:        #f13a11;
     --white-color:          #ffffff;

@@ -10,28 +10,23 @@ class PlanController extends Controller
 {
     public function index()
     {
-        // جلب جميع الخطط من قاعدة البيانات
         $plans = Plan::all();
-        // عرض الخطط في عرض 'users.subscriptions'
         return view('users.subscriptions', compact('plans'));
     }
 
     public function indexx()
     {
-        // جلب جميع الخطط من قاعدة البيانات
         $plans = Plan::all();
-        // عرض الخطط في عرض 'users.subscriptions'
         return view('admin.plans-list', compact('plans'));
     }
 
     public function create()
     {
-        return view('admin.add-plan'); // عرض صفحة إضافة خطة
+        return view('admin.add-plan'); 
     }
 
     public function store(Request $request)
     {
-        // التحقق من صحة البيانات
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'sub_title' => 'required|string|max:255',
@@ -40,31 +35,26 @@ class PlanController extends Controller
             'duration' => 'required|integer',
         ]);
 
-        // إنشاء خطة جديدة
         Plan::create([
             'name' => $validatedData['name'],
-            'sub_title' => $validatedData['sub_title'],  // إضافة sub_title
+            'sub_title' => $validatedData['sub_title'],  
             'desc' => $validatedData['desc'],
             'price' => $validatedData['price'],
             'duration' => $validatedData['duration'],
         ]);
 
-        // إعادة التوجيه مع رسالة نجاح
         return redirect()->route('plans.indexx')->with('success', 'Plan added successfully.');
     }
 
 
     public function edit($id)
     {
-        // جلب الخطة من قاعدة البيانات
         $plan = Plan::findOrFail($id);
-        // عرض صفحة التعديل مع تمرير الخطة
         return view('admin.edit-plan', compact('plan'));
     }
 
     public function update(Request $request, $id)
     {
-        // تحقق من صحة البيانات المُدخلة
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'sub_title' => 'required|string|max:255',
@@ -73,7 +63,6 @@ class PlanController extends Controller
             'duration' => 'required|integer',
         ]);
 
-        // البحث عن الخطة وتحديث البيانات
         $plan = Plan::find($id);
 
         if ($plan) {
@@ -93,7 +82,6 @@ class PlanController extends Controller
 
     public function destroy($id)
     {
-        // البحث عن الخطة وحذفها
         $plan = Plan::find($id);
 
         if ($plan) {

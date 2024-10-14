@@ -62,7 +62,7 @@
 
         {{-- Show profile card for both admin and user --}}
         @if (Auth::user()->role === 'admin' || Auth::user()->role === 'user')
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+            <div class="col-lg-6 col-md-6 col-sm-12 mb-2 ">
                 <div class="card" style="height: 300px;">
                     <div class="card-body text-center"> 
                         <h3 class="card-title mt-3">Profile Data</h3>
