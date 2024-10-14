@@ -139,7 +139,7 @@ class ClassController extends Controller
     
     // Check if the user is authenticated
     if (!$user) {
-        return redirect()->route('login')->with('error', 'You need to be logged in to join a class.');
+        return redirect()->route('loginn')->with('error', 'You need to be logged in to join a class.');
     }
 
     // Check if the user is an admin
