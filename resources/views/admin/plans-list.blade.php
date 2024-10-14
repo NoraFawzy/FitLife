@@ -41,7 +41,7 @@
                 <td>{{ $plan->name }}</td>
                 <td>{{ explode('.', $plan->desc)[0] }}.</td>
                 <td>{{ $plan->price }} EGP</td>
-                <td>{{ $plan->duration }}</td>
+                <td>{{ $plan->duration }} Months</td>
                 <td>
                     <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-primary btn-sm">Update</a>
 

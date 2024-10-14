@@ -29,7 +29,7 @@
                                 <p>{{ $plan->sub_title }}</p>
                                 <p class="price">
                                     <span>{{ $plan->price }}</span> /
-                                    {{ $plan->duration }} {{ $plan->duration == 1 ? 'Days' : 'Days' }}
+                                    {{ $plan->duration }} {{ $plan->duration == 1 ? 'Months' : 'Months' }}
                                 </p>
                                 <ul class="pricing-offers">
                                     @foreach(explode(',', $plan->desc) as $item)
