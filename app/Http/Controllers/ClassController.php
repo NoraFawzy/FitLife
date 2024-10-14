@@ -6,16 +6,16 @@ use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Models\Coach;
 
-
 class ClassController extends Controller
 {
     // Display a listing of the classes
     public function index()
     {
-        $classesx = Classes::all();
+        // Eager load the coach relationship
+        $classesx = Classes::with('coach')->get();
         return view('admin.classes-list', compact('classesx'));
     }
-
+    
     // public function userClasses()
     // {
     //     $classesx = Classes::all(); // Fetch all classes
@@ -70,7 +70,7 @@ class ClassController extends Controller
         // تأكد من تخزين الاسم فقط في قاعدة البيانات
         Classes::create(array_merge($request->all(), ['image' => $imageName]));
 
-        return redirect()->route('classes.user')->with('success', 'Class added successfully!');
+        return redirect()->route('classes.index')->with('success', 'Class added successfully!');
     }
 
 
@@ -78,7 +78,8 @@ class ClassController extends Controller
     // Show the form for editing the specified class
     public function edit(Classes $class)
     {
-        return view('admin.class-edit', compact('class')); // Ensure you have this view
+        $coaches = Coach::all();
+        return view('admin.class-edit', compact('class', 'coaches'));
     }
 
     // Update the specified class
@@ -89,11 +90,40 @@ class ClassController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'date' => 'required|date',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
+            'coach_id' => 'nullable|exists:coaches,id' // Validate coach exists in the coaches table
         ]);
-
-        $class->update($request->all());
+    
+        // Update class fields
+        $class->name = $request->input('name');
+        $class->description = $request->input('description');
+        $class->price = $request->input('price');
+        $class->date = $request->input('date');
+        $class->coach_id = $request->input('coach_id'); // Update coach
+    
+        // Handle the image upload
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($class->image && file_exists(public_path('upload/' . $class->image))) {
+                unlink(public_path('upload/' . $class->image));
+            }
+    
+            // Store the new image
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('upload'), $imageName);
+    
+            // Update the image path in the class
+            $class->image = $imageName;
+        }
+    
+        // Save the updated class
+        $class->save();
+    
         return redirect()->route('classes.index')->with('success', 'Class updated successfully.');
     }
+    
+    
+    
 
     // Remove the specified class
     public function destroy(Classes $class)

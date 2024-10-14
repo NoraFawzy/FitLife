@@ -1,4 +1,17 @@
 @extends('layouts.app')
+<style>
+        .btnn {
+            color: #fff;
+            background-color: #f13a11;
+            width: 150px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .btnn:hover {
+            color: #fff;
+        }
+    </style>
 
 @section('content')
     <div class="container mt-5">
@@ -26,13 +39,39 @@
 
                     <div class="form-group mb-3">
                         <label for="date">Class Date</label>
-                        <input type="date" class="form-control" id="date" name="date" value="{{ $class->date}}" required>
+                        <input type="date" class="form-control" id="date" name="date" value="{{ $class->date }}" required>
                     </div>
 
+                    <div class="form-group mb-3">
+    <label for="coach_id">Assign Coach</label>
+    <select class="form-control @error('coach_id') is-invalid @enderror" id="coach_id" name="coach_id">
+        <option value="" {{ is_null($class->coach_id) ? 'selected' : '' }}>Select a coach (optional)</option>
+        @foreach($coaches as $coach)
+            <option value="{{ $coach->id }}" {{ $class->coach_id == $coach->id ? 'selected' : '' }}>
+                {{ $coach->name }}
+            </option>
+        @endforeach
+    </select>
+    @error('coach_id')
+    <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+                    <div class="form-group mb-3">
+                        <label for="image">Class Image</label>
+                        <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                    </div>
+
+                    <!-- Display current image if it exists -->
+                    @if ($class->image)
+                        <div class="form-group mb-3">
+                            <label>Current Image</label>
+                            <img src="{{ asset('upload/' . $class->image) }}" alt="Class Image" class="img-thumbnail" style="max-width: 200px;">
+                        </div>
+                    @endif
 
                     <!-- Submit Button -->
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn" name="send">Save Changes</button>
+                        <button type="submit" class="btnn" name="send">Save Changes</button>
                     </div>
                 </form>
             </div>

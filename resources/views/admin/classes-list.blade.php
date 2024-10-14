@@ -27,6 +27,8 @@
                     <th scope="col">Description</th>
                     <th scope="col">Price</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Coach</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -39,6 +41,19 @@
                     <td>${{ $class->price }}</td>
                     <td>{{ $class->date}}</td>
                     <td>
+    @if ($class->image)
+        <img src="{{ asset('upload/' . $class->image) }}" alt="class img" style="max-width: 100px;">
+    @else
+        No image available
+    @endif
+</td>                <td>
+    @if ($class->coach)
+        {{ $class->coach->name }}
+    @else
+        No coach assigned
+    @endif
+</td>
+                        <td>
                         <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-primary btn-sm">Update</a>
                         <form action="{{ route('classes.destroy', $class->id) }}" method="POST" style="display:inline;">
                             @csrf
