@@ -31,7 +31,7 @@
                     <th scope="row">{{ $class->id }}</th>
                     <td>{{ $class->name }}</td>
                     <td>{{ $class->description }}</td>
-                    <td>${{ $class->price }}</td>
+                    <td>EGP {{ $class->price }}</td>
                     <td>{{ $class->date}}</td>
                     <td>
     @if ($class->image)
