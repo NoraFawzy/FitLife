@@ -20,7 +20,7 @@ class UserController extends Controller
             $users = User::where('email', 'LIKE', "%{$search}%")->get();
         } else {
             // إذا لم يكن هناك بحث، اعرض جميع المستخدمين
-            $users = User::with('plan')->orderBy('created_at', 'desc')->get(); // إحضار المستخدمين مع خطتهم، ترتيب حسب تاريخ الإنشاء
+            $users = User::with('plan')->orderBy('id', 'asc')->get(); // إحضار المستخدمين مع خطتهم، ترتيب حسب تاريخ الإنشاء
         }
         // عرض المستخدمين في الواجهة
         return view('admin.users-list', compact('users'));

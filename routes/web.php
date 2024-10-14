@@ -19,9 +19,14 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
+// Route::get('/', function () {
+//   return view('index');
+// })->name('index');
+
+
 Route::get('/loginn', function () {
     return view('loginn'); 
-})->name('loginn'); // Give it a name
+})->name('loginn'); 
 
   Route::get('/subscriptions', function () {
     return view('users.subscriptions');

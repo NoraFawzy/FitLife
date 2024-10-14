@@ -112,8 +112,14 @@ class ClassController extends Controller
         return redirect()->route('login')->with('error', 'You need to be logged in to join a class.');
     }
 
+    // Check if the user is an admin
+    if ($user->role === 'admin') { // Check if the user's role is 'admin'
+        alert()->error('Error', 'Admins cannot join classes.');
+        return redirect()->route('classes.index'); // Redirect back to the classes list or any other appropriate page
+    }
+
     // Find the class by its ID
-    $class = Classes::findOrFail($classId); // Assuming the model name is `ClassModel`
+    $class = Classes::findOrFail($classId);
 
     // Check if the user has already joined this class
     if ($user->classes->contains($class->id)) {
@@ -123,7 +129,7 @@ class ClassController extends Controller
 
     // Attach the class to the user (this will insert into the user_class table)
     $user->classes()->attach($class->id, [
-        'joined_at' => now(), // Optionally, you can add additional fields like join date
+        'joined_at' => now(),
     ]);
 
     // Save the user instance and return success
@@ -131,12 +137,5 @@ class ClassController extends Controller
     return redirect()->route('profile.show');
 }
 
-    //class_sub page
-    public function userCoaches()
-{
-    $classesx = Classes::all();  // Replace with your logic
-    $coaches = Coach::all();  
-        return view('users.classes-coaches', ['classesx' => $classesx, 'coaches' => $coaches]); // Return the correct view with the classes and coaches
-}
 
 }
