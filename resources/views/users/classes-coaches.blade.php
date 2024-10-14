@@ -66,7 +66,7 @@
                             <div class="class-info">
                                 <h3 class="mb-1">{{ $class->name }}</h3>
                                 <span class='pe-5'><strong>Trained by</strong> <br>- {{ $class->coach->name ?? 'No coach assigned' }}</span>
-                                <span class="class-price">${{ $class->price }}</span>
+                                <span class="class-price">{{ $class->price }}</span>
                                 <p class="mt-3">{{ $class->description }}</p>
                             </div>
                         </div>
