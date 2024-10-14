@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="duration">Class Duration (in days)</label>
+                        <label for="duration">Class Duration (in months)</label>
                         <input type="number" class="form-control" id="duration" name="duration" placeholder="Duration" required>
                     </div>
 
