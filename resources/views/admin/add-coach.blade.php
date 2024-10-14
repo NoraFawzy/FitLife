@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Coach</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
 
     <style>
@@ -30,7 +29,7 @@
             <div class="col-md-6">
                 <h1 class="text-center mb-4" style="color:#f13a11;">Add Coach</h1>
                 <form method="POST" action="{{ route('coach.store') }}" enctype="multipart/form-data">
-                    @csrf <!-- تأكد من تضمين رمز الحماية CSRF -->
+                    @csrf 
 
                     <div class="form-group mb-3">
                         <label for="title">Coach Name</label>
@@ -50,7 +49,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

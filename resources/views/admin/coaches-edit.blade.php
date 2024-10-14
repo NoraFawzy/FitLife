@@ -7,7 +7,7 @@
                 <h1 class="text-center text mb-4" style="color:#f40101;">Edit Coach</h1>
                 <form method="POST" action="{{ route('coaches.update', $coach->id) }}" enctype="multipart/form-data">
                     @csrf <!-- CSRF token -->
-                    @method('PUT') <!-- وضع الميثود كـ PUT -->
+                    @method('PUT') 
 
                     <div class="form-group mb-3">
                         <label for="name">Coach Name</label>

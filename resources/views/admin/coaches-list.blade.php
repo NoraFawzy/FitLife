@@ -38,7 +38,8 @@
                             <form action="{{ route('coaches.destroy', $coach->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this email?')">Delete</button>
+
                             </form>
                         </td>
                     </tr>

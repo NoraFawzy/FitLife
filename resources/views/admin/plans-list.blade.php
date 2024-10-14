@@ -39,7 +39,7 @@
             <tr>
                 <th scope="row">{{ $plan->id }}</th>
                 <td>{{ $plan->name }}</td>
-                <td>{{ explode('.', $plan->desc)[0] }}.</td> <!-- عرض أول جملة فقط من الوصف -->
+                <td>{{ explode('.', $plan->desc)[0] }}.</td>
                 <td>{{ $plan->price }} EGP</td>
                 <td>{{ $plan->duration }}</td>
                 <td>
@@ -48,8 +48,8 @@
                     <form action="{{ route('plans.destroy', $plan->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this plan?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this email?')">Delete</button>
+                        </form>
                 </td>
             </tr>
         @endforeach

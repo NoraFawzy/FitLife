@@ -7,7 +7,7 @@
                 <h1 class="text-center text mb-4" style="color:#f40101;">Edit Subscription Plan</h1>
                 <form method="POST" action="{{ route('plans.update', $plan->id) }}" enctype="multipart/form-data">
                     @csrf <!-- CSRF token -->
-                    @method('PUT') <!-- وضع الميثود كـ PUT -->
+                    @method('PUT') 
 
                     <div class="form-group mb-3">
                         <label for="name">Plan Name</label>

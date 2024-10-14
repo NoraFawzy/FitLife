@@ -16,7 +16,7 @@
                 <input type="text" name="search" class="form-control form-control-sm" placeholder="Search by email..." value="{{ request()->query('search') }}" style="width: 300px;">
                 <button class="btn btn-outline-primary btn-sm ml-2" type="submit">Search</button>
             </form>
-            <a href="{{ route('users.create') }}" class="btn btn-success btn-sm ml-auto">+ Add New User</a> <!-- استخدام ml-auto هنا -->
+            <a href="{{ route('users.create') }}" class="btn btn-success btn-sm ml-auto">+ Add New User</a> 
         </div>
 
         <div class="table-responsive">

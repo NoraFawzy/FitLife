@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Class</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
     <style>
         .btnn {
             color: #fff;
@@ -60,7 +58,6 @@
                         @enderror
                     </div>
 
-                    <!-- حقل التاريخ مع خاصية min لمنع اختيار تاريخ قديم -->
                     <div class="form-group mb-3">
                         <label for="date">Class Date</label>
                         <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required value="{{ old('date') }}" min="{{ date('Y-m-d') }}">
@@ -139,7 +136,6 @@
         });
     </script>
 
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
