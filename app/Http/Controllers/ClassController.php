@@ -167,5 +167,11 @@ class ClassController extends Controller
     return redirect()->route('profile.show');
 }
 
+public function userCoaches()
+{
+    $classesx = Classes::all();  // Replace with your logic
+    $coaches = Coach::all();  
+        return view('users.classes-coaches', ['classesx' => $classesx, 'coaches' => $coaches]); // Return the correct view with the classes and coaches
+}
 
 }

@@ -10,6 +10,15 @@
         white-space: pre-wrap; /* Preserve whitespace and wrap lines */
         overflow-wrap: break-word; /* Break words that are too long */
     }
+
+    .modal-bodyy {
+        max-height: 500px; /* Set your desired max height */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+    }
+    /* Optional: Reduce the height of the textarea */
+    #replyMessage {
+        height: 200px; /* Set to your preferred height */
+    }
 </style>
 
 @section('content')
@@ -92,36 +101,36 @@
 
                 <!-- Modal for Admin Reply -->
                 <div class="modal fade" id="replyModal-{{ $email->id }}" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel-{{ $email->id }}" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="replyModalLabel-{{ $email->id }}">Admin Reply to {{ $email->name }}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="{{ route('emails.reply', $email->id) }}" method="POST">
-                                @csrf
-                                <div class="modal-body">
-                                    @if ($email->is_replied)
-                                        <p><strong>Previous Reply:</strong></p>
-                                        <p>{{ $email->admin_reply }}</p>
-                                    @else
-                                        <p>No reply has been made yet.</p>
-                                    @endif
-                                    <div class="form-group">
-                                        <label for="replyMessage">Your Reply:</label>
-                                        <textarea class="form-control" id="replyMessage" name="message" rows="5" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Send Reply</button>
-                                </div>
-                            </form>
-                        </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="replyModalLabel-{{ $email->id }}">Admin Reply to {{ $email->name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('emails.reply', $email->id) }}" method="POST">
+                @csrf
+                <div class="modal-bodyy">
+                    @if ($email->is_replied)
+                        <p><strong>Previous Reply:</strong></p>
+                        <p>{{ $email->admin_reply }}</p>
+                    @else
+                        <p>No reply has been made yet.</p>
+                    @endif
+                    <div class="form-group">
+                        <label for="replyMessage">Your Reply:</label>
+                        <textarea class="form-control" id="replyMessage" name="message" rows="3" required></textarea> <!-- Reduced rows for textarea -->
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
             @endforeach
         </tbody>
