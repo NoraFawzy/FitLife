@@ -62,7 +62,7 @@
                         <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your body at FitLife Hub</h1>
                         <a href="#class" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
 
-                       <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
+                       <a href="{{ route('plans.index') }}" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Subscription plans</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,6 @@
     <a href="{{ route('classes-coaches') }}">Our Training Classes</a>
 </h2>            </div>
 
-            <!-- عرض فقط 3 بطاقات -->
             @foreach($classesx->take(3) as $class)
             <div class="col-lg-4 col-md-6 col-12 mb-5" data-aos="fade-up" data-aos-delay="400">
                 <a href="{{route('class_sub' ,$class->id )}}" class="class-card-link">
@@ -126,8 +125,8 @@
     </div>
 
     <div style="text-align: center;">
-        <a href="{{ route('plans.index') }}" class="custom-btnn">
-            Subscription Plans
+        <a href="{{ route('classes-coaches') }}" class="custom-btnn">
+            See More
         </a>
     </div>
 </section>
