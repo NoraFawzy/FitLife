@@ -59,15 +59,18 @@
             <!-- Loop through classes -->
             @foreach($classesx as $class)
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="class-thumb">
-                        <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="{{ $class->name }}">
-                        <div class="class-info">
-                            <h3 class="mb-1">{{ $class->name }}</h3>
-                            <span class='pe-5'><strong>Trained by</strong> <br>- {{ $class->coach->name ?? 'No coach assigned' }}</span>
-                            <span class="class-price">${{ $class->price }}</span>
-                            <p class="mt-3">{{ $class->description }}</p>
+                    <!-- Add anchor tag to make the class clickable -->
+                    <a href="{{ route('class_sub', $class->id) }}" class="class-link">
+                        <div class="class-thumb">
+                            <img src="{{ asset('upload/' . $class->image) }}" class="img-fluid" alt="{{ $class->name }}">
+                            <div class="class-info">
+                                <h3 class="mb-1">{{ $class->name }}</h3>
+                                <span class='pe-5'><strong>Trained by</strong> <br>- {{ $class->coach->name ?? 'No coach assigned' }}</span>
+                                <span class="class-price">${{ $class->price }}</span>
+                                <p class="mt-3">{{ $class->description }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
 
