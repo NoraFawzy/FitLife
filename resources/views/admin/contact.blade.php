@@ -15,9 +15,22 @@
         max-height: 500px; /* Set your desired max height */
         overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
     }
+
     /* Optional: Reduce the height of the textarea */
     #replyMessage {
         height: 200px; /* Set to your preferred height */
+    }
+
+    /* Set standard width for table */
+    .custom-table {
+        max-width: 1200px; /* Set your desired max width here */
+        width: 100%; /* Ensure it doesn't exceed the max width */
+    }
+
+    /* Enable word wrapping in table cells */
+    .table td, .table th {
+        word-wrap: break-word; /* Allow words to break to the next line */
+        white-space: normal; /* Allow normal whitespace behavior */
     }
 </style>
 
@@ -39,7 +52,7 @@
         </form>
     </div>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered custom-table"> 
         <thead class="text-light" style="background-color: #E85C0D;">
             <tr>
                 <th scope="col">ID</th>
@@ -78,59 +91,59 @@
                     </td>
                 </tr>
 
-            <!-- Modal for Full Message -->
-<div class="modal fade" id="viewMessageModal-{{ $email->id }}" tabindex="-1" role="dialog" aria-labelledby="viewMessageModalLabel-{{ $email->id }}" aria-hidden="true">
-    <div class="modal-dialog custom-modal-width" role="document"> <!-- Use custom class here -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="viewMessageModalLabel-{{ $email->id }}">Message from {{ $email->name }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Message:</strong></p>
-                <p>{{ $email->message }}</p> <!-- This will wrap as needed -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <!-- Modal for Admin Reply -->
-                <div class="modal fade" id="replyModal-{{ $email->id }}" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel-{{ $email->id }}" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="replyModalLabel-{{ $email->id }}">Admin Reply to {{ $email->name }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('emails.reply', $email->id) }}" method="POST">
-                @csrf
-                <div class="modal-bodyy">
-                    @if ($email->is_replied)
-                        <p><strong>Previous Reply:</strong></p>
-                        <p>{{ $email->admin_reply }}</p>
-                    @else
-                        <p>No reply has been made yet.</p>
-                    @endif
-                    <div class="form-group">
-                        <label for="replyMessage">Your Reply:</label>
-                        <textarea class="form-control" id="replyMessage" name="message" rows="3" required></textarea> <!-- Reduced rows for textarea -->
+                <!-- Modal for Full Message -->
+                <div class="modal fade" id="viewMessageModal-{{ $email->id }}" tabindex="-1" role="dialog" aria-labelledby="viewMessageModalLabel-{{ $email->id }}" aria-hidden="true">
+                    <div class="modal-dialog custom-modal-width" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="viewMessageModalLabel-{{ $email->id }}">Message from {{ $email->name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Message:</strong></p>
+                                <p style="word-wrap: break-word; white-space: pre-wrap;">{{ $email->message }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                
+                <!-- Modal for Admin Reply -->
+                <div class="modal fade" id="replyModal-{{ $email->id }}" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel-{{ $email->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="replyModalLabel-{{ $email->id }}">Admin Reply to {{ $email->name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{ route('emails.reply', $email->id) }}" method="POST">
+                                @csrf
+                                <div class="modal-bodyy">
+                                    @if ($email->is_replied)
+                                        <p><strong>Previous Reply:</strong></p>
+                                        <p>{{ $email->admin_reply }}</p>
+                                    @else
+                                        <p>No reply has been made yet.</p>
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="replyMessage">Your Reply:</label>
+                                        <textarea class="form-control" id="replyMessage" name="message" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
 
             @endforeach
         </tbody>
