@@ -11,7 +11,6 @@ class ClassController extends Controller
     // Display a listing of the classes
     public function index()
     {
-        // Eager load the coach relationship
         $classesx = Classes::with('coach')->get();
         return view('admin.classes-list', compact('classesx'));
     }
@@ -67,7 +66,6 @@ class ClassController extends Controller
             $imageName = null; // No image uploaded
         }
 
-        // تأكد من تخزين الاسم فقط في قاعدة البيانات
         Classes::create(array_merge($request->all(), ['image' => $imageName]));
 
         return redirect()->route('classes.index')->with('success', 'Class added successfully!');
@@ -99,7 +97,7 @@ class ClassController extends Controller
         $class->description = $request->input('description');
         $class->price = $request->input('price');
         $class->date = $request->input('date');
-        $class->coach_id = $request->input('coach_id'); // Update coach
+        $class->coach_id = $request->input('coach_id'); 
     
         // Handle the image upload
         if ($request->hasFile('image')) {
@@ -116,7 +114,6 @@ class ClassController extends Controller
             $class->image = $imageName;
         }
     
-        // Save the updated class
         $class->save();
     
         return redirect()->route('classes.index')->with('success', 'Class updated successfully.');
@@ -134,16 +131,14 @@ class ClassController extends Controller
 
     public function joinClass($classId)
 {
-    // Get the currently authenticated user
     $user = auth()->user();
     
-    // Check if the user is authenticated
     if (!$user) {
         return redirect()->route('loginn')->with('error', 'You need to be logged in to join a class.');
     }
 
     // Check if the user is an admin
-    if ($user->role === 'admin') { // Check if the user's role is 'admin'
+    if ($user->role === 'admin') { 
         alert()->error('Error', 'Admins cannot join classes.');
         return redirect()->route('classes.index'); // Redirect back to the classes list or any other appropriate page
     }
@@ -157,19 +152,17 @@ class ClassController extends Controller
         return redirect()->route('profile.show');
     }
 
-    // Attach the class to the user (this will insert into the user_class table)
     $user->classes()->attach($class->id, [
         'joined_at' => now(),
     ]);
 
-    // Save the user instance and return success
     alert()->success('Success', 'Successfully joined the class.');
     return redirect()->route('profile.show');
 }
 
 public function userCoaches()
 {
-    $classesx = Classes::all();  // Replace with your logic
+    $classesx = Classes::all();  
     $coaches = Coach::all();  
         return view('users.classes-coaches', ['classesx' => $classesx, 'coaches' => $coaches]); // Return the correct view with the classes and coaches
 }
